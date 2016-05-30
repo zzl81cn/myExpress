@@ -10,5 +10,12 @@
 </head>
 <body>
 	<% include nav %>
+	<% if(locals.islogin) {%>
+		用户已登录
+		<% } else {%>
+			<form method="post">
+				<input type="submit" value="login">
+			</form>
+	<% } %>
 </body>
 </html>
