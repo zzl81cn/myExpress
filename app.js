@@ -8,6 +8,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var subform = require('./routes/subform'),
+    usesession = require('./routes/usesession'),
+    usecookies = require('./routes/usecookies'),
+    usecrypto = require('./routes/usecrypto');
+
 var app = express();
 
 // view engine setup
@@ -24,6 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/subform', subform);
+app.use('/usesession', usesession);
+app.use('/usecookies', usecookies);
+app.use('/usecrypto', usecrypto);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
