@@ -2,6 +2,7 @@
   "name": "myExpress",
   "version": "0.0.0",
   "private": true,
+  "repository": "https://github.com/zzl81cn/myExpress",
   "scripts": {
     "start": "node ./bin/www"
   },
