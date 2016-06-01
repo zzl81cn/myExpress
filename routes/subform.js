@@ -14,6 +14,11 @@ router.get('/', function(req, res) {
 	});
 });
 
+/*GET和POST方式接收值，从直接效果上来看
+req.query：我用来接收GET方式提交参数
+req.body：我用来接收POST提交的参数
+req.params：两种都能接收到*/
+
 router.post('/', function(req, res) {
 	// var userName = req.query.txtUserName,
 	// 		userPwd = req.query.txtUserPwd,
