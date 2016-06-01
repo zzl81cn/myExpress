@@ -29,7 +29,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 	req.session.islogin = 'success';
 	res.locals.islogin = req.session.islogin;
-	res.cookie('islogin', 'success', {maxAge: 6000});
+	res.cookie('islogin', 'success', {maxAge: 60000});
 	res.render('usecookies', {title: 'use usecookies example'});
 });
 
