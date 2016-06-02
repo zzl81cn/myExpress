@@ -16,7 +16,7 @@ var pool = mysql.createPool({
 pool.getConnection(function(err, connection) {
 	connection.query('SELECT * FROM userinfo WHERE id = ' + '1 OR ID = 3', function(err, result) {
 		console.log(result);
-		connection.release();
+		// connection.release();
 	});
 
 	connection.query('SELECT * FROM userinfo WHERE id =' + pool.escape('1 OR ID = 3'), function(err, result) {
