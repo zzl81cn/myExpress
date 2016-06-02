@@ -8,7 +8,8 @@ var DB_NAME = 'nodesample';
 var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'zzl81cn'
+  password: 'zzl81cn',
+  database: 'nodesample'
 });
 
 pool.on('connection', function(connection) {
@@ -22,7 +23,7 @@ function User(user) {
 module.exports = User;
 
 pool.getConnection(function(err, connection) {
-  var useDbSql = 'USE' + DB_NAME;
+  var useDbSql = "USE" + DB_NAME;
   connection.query(useDbSql, function(err) {
     if (err) {
       console.log("USE Error: " + err.message);
@@ -36,7 +37,7 @@ pool.getConnection(function(err, connection) {
       userpass: this.userpass
     };
 
-    var inserUser_Sql = "INSERT INTO userinfo(id, username, userpass) VALUES(0,?,?)";
+    var insertUser_Sql = "INSERT INTO userinfo(id, username, userpass) VALUES(0,?,?)";
 
     connection.query(insertUser_Sql, [user.username, user.userpass], function(err, result) {
       if(err) {

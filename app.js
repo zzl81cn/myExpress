@@ -6,16 +6,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var routes = require('./routes/index');
+var routes = require('./routes/index'),
 //var users = require('./routes/users');
+    reg = require('./routes/reg'),
+    login = require('./routes/login'),
+    logout = require('./routes/logout');
+
 
 var subform = require('./routes/subform'),
     usesession = require('./routes/usesession'),
     usecookies = require('./routes/usecookies'),
-    usecrypto = require('./routes/usecrypto'),
-    reg = require('./routes/reg');
-    // login = require('./routes/login'),
-    // logout = require('./routes/logout');
+    usecrypto = require('./routes/usecrypto');
 
 var app = express();
 
@@ -35,13 +36,13 @@ app.use(session({secret: 'zzl81cn'}));
 
 app.use('/', routes);
 //app.use('/users', users);
+app.use('/reg', reg);
+// app.use('/login', login);
+// app.use('/logout', logout);
 app.use('/subform', subform);
 app.use('/usesession', usesession);
 app.use('/usecookies', usecookies);
 app.use('/usecrypto', usecrypto);
-app.use('/reg', reg);
-// app.use('/login', login);
-// app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
