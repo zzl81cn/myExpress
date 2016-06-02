@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+//var users = require('./routes/users');
 
 var subform = require('./routes/subform'),
     usesession = require('./routes/usesession'),
@@ -31,7 +31,7 @@ app.use(cookieParser('zzl81cn'));
 app.use(session({secret: 'zzl81cn'}));
 
 app.use('/', routes);
-app.use('/users', users);
+//app.use('/users', users);
 app.use('/subform', subform);
 app.use('/usesession', usesession);
 app.use('/usecookies', usecookies);
