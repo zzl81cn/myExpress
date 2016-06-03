@@ -28,7 +28,10 @@ router.get('/', function(req, res, next) {
 		res.redirect('/login');
 		return;
 	}
-	res.render('index', {title: '主页'});
+	res.render('index', {
+		title: '主页',
+		message: 'login succeed!'
+	});
 });
 
 module.exports = router;
