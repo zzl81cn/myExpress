@@ -75,8 +75,11 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(3000, function() {
-  console.log("Server is starting...");
+var server = app.listen(3000, function() {
+  // console.log("Server is starting...");
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log("Sever listening at http://%s:%s", host, port);
 });
 
 module.exports = app;
