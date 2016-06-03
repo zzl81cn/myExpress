@@ -6,10 +6,10 @@ var mysql = require('mysql');
 var DB_NAME = 'nodesample';
 
 var pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'zzl81cn',
-  database: 'nodesample'
+  host: 'localhost'
+  ,user: 'root'
+  ,password: 'zzl81cn'
+  ,database: 'nodesample'
 });
 
 pool.on('connection', function(connection) {
@@ -23,13 +23,13 @@ function User(user) {
 module.exports = User;
 
 pool.getConnection(function(err, connection) {
-  var useDbSql = "USE" + DB_NAME;
-  connection.query(useDbSql, function(err) {
-    if (err) {
-      console.log("USE Error: " + err.message);
-    }
-    console.log('USE success!');
-  });
+  // var useDbSql = "USE" + DB_NAME;
+  // connection.query(useDbSql, function(err) {
+  //   if (err) {
+  //     console.log("USE Error: " + err.message);
+  //   }
+  //   console.log('USE success!');
+  // });
 
   User.prototype.save = function save(callback) {
     var user = {
@@ -37,44 +37,47 @@ pool.getConnection(function(err, connection) {
       userpass: this.userpass
     };
 
-    var insertUser_Sql = "INSERT INTO userinfo(id, username, userpass) VALUES(0,?,?)";
+    var insertUser_Sql = "INSERT INTO userinfo(Id, UserName, UserPass) VALUES(0,?,?)";
 
     connection.query(insertUser_Sql, [user.username, user.userpass], function(err, result) {
       if(err) {
         console.log("insertUser_Sql Error: " + err.message);
+        return;
       }
-      connection.release();
+      // connection.release();
       console.log("invoked[save]");
+      console.log(result);
       callback(err, result);
     });
   };
 
   User.getUserNumByName = function getUserNumByName(username, callback) {
-    var getUserNumByName_Sql = "SELECT COUNT(1) AS num FROM userinfo WHERE username = ?";
+    var getUserNumByName_Sql = "SELECT COUNT(1) AS num FROM userinfo WHERE UserName = ?";
 
     connection.query(getUserNumByName_Sql, [username], function(err, result) {
       if(err) {
         console.log("getUserNumByName_Sql Error: " + err.message);
+        return;
       }
-      connection.release();
+      // connection.release();
       console.log("invoked[getUserNumByName_Sql]");
       callback(err, result);
     });
   };
 
   User.getUserByUserName = function getUserByUserName(username, callback) {
-    var getUserByUserName_Sql = "SELECT * FROM userinfo WHERE username = ?";
+    var getUserByUserName_Sql = "SELECT * FROM userinfo WHERE UserName = ?";
 
     connection.query(getUserByUserName_Sql, [username], function(err, result) {
       if(err) {
         console.log("getUserByUserName_Sql Error: " + err.message);
+        return;
       }
-      connection.release();
+      // connection.release();
       console.log("invoked[getUserNumByName_Sql]");
       callback(err, result);
     });
 
   };
-
 
 });
