@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
 		res.render('login',{title:TITLE_LOGIN});
 		return;
     }
-
+//    console.log('getUserByUserName:' + result);
 	userPwd = md5.update(userPwd).digest('hex');
 	if(results[0].UserName != userName || results[0].UserPass != userPwd){
 		res.locals.error = '用户名或密码有误';
@@ -38,7 +38,7 @@ router.post('/', function(req, res) {
 
 		res.locals.username = userName;
 		req.session.username = res.locals.username;
-		console.log(req.session.username);
+		console.log('req.session.username is: ' + req.session.username);
 		res.redirect('/');
 		return;
 	}
