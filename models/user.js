@@ -6,10 +6,10 @@ var mysql = require('mysql');
 var DB_NAME = 'nodesample';
 
 var pool = mysql.createPool({
-  host: 'localhost'
-  ,user: 'root'
-  ,password: 'zzl81cn'
-  ,database: 'nodesample'
+  host: 'localhost',
+  user: 'root',
+  password: 'zzl81cn',
+  database: 'nodesample'
 });
 
 pool.on('connection', function(connection) {
