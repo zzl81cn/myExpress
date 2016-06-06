@@ -3,14 +3,15 @@
  http://www.cnblogs.com/zhongweiv/p/nodejs_express_webapp.html
  */
 var mysql = require('mysql');
-var DB_NAME = 'nodesample';
+//var DB_NAME = 'nodesample';
+var mysql_cfg = {
+	host: 'localhost',
+	user: 'root',
+	password: 'zzl81cn',
+	database: 'nodesample'
+};
 
-var pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'zzl81cn',
-  database: 'nodesample'
-});
+var pool = mysql.createPool(mysql_cfg);
 
 pool.on('connection', function(connection) {
   connection.query('SET SESSION auto_increment_increment=1');
@@ -32,6 +33,7 @@ pool.getConnection(function(err, connection) {
   // });
 
   User.prototype.save = function save(callback) {
+	  
     var user = {
       username: this.username,
       userpass: this.userpass

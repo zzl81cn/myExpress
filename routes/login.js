@@ -19,8 +19,7 @@ router.post('/', function(req, res) {
      
   User.getUserByUserName(userName, function (err, results) {
       
-    if(results == '')
-    {
+    if(results == '') {
 		res.locals.error = '用户不存在';
 		res.render('login',{title:TITLE_LOGIN});
 		return;
