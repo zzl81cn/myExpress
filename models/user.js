@@ -77,7 +77,6 @@ pool.getConnection(function(err, connection) {
       console.log("invoked[getUserNumByName_Sql]");
       callback(err, result);
     });
-
   };
 
 });

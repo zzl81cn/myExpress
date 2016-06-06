@@ -106,6 +106,7 @@ connection.query(userGetSql, function(err, result) {
 // 	console.log('------------------------------');
 // })
 
+
 connection.end(function(err) {
 	if(err) {
 		return;
