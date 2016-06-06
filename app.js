@@ -32,7 +32,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser('zzl81cn'));
-app.use(session({secret: 'zzl81cn'}));
+app.use(session({
+	//添加这行,fixed express-session deprecated undefined resave option; provide resave option app.js:99.9
+	//express-session deprecated undefined saveUninitialized option; provide saveUninitialized option app.js:99.9
+	resave:false,
+	//添加这行
+	saveUninitialized: true,
+	secret: 'zzl81cn'
+	}
+));
 
 app.use('/', routes);
 //app.use('/users', users);
