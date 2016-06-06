@@ -21,9 +21,9 @@ router.post('/', function(req, res) {
       
     if(results == '')
     {
-			res.locals.error = '用户不存在';
-			res.render('login',{title:TITLE_LOGIN});
-			return;
+		res.locals.error = '用户不存在';
+		res.render('login',{title:TITLE_LOGIN});
+		return;
     }
 
 		userPwd = md5.update(userPwd).digest('hex');

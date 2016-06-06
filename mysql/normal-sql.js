@@ -28,7 +28,7 @@ var connection = mysql.createConnection({
   user     : 'root',
   password : 'zzl81cn',
   database : 'nodesample',
-  port     : '3306'
+  port     : '3306' // 默认3306，可以不写。
 });
 
 
@@ -47,6 +47,7 @@ connection.connect(function(err) {
 //   console.log('The solution is: ', rows[0].solution);
 // });
 
+
 // Insert data
 // var userAddSql = 'INSERT INTO userinfo(Id,UserName,UserPass) VALUES(0,?,?)';
 // var userAddSql_Params = ['zilong', 'Zhou'];
@@ -62,6 +63,7 @@ connection.connect(function(err) {
 // 	console.log('--------------------------');
 // })
 
+
 // Modify data
 // var userModSql = 'UPDATE userinfo SET UserName = ?, UserPass = ? WHERE Id = ?';
 // var userModSql_Params = ['紫龙', '1234', 1];
@@ -76,7 +78,8 @@ connection.connect(function(err) {
 // 	console.log('--------------------------');
 // });
 
-// query
+
+// query data
 var userGetSql = 'SELECT * FROM userinfo';
 
 connection.query(userGetSql, function(err, result) {
@@ -88,6 +91,7 @@ connection.query(userGetSql, function(err, result) {
 	console.log(result);
 	console.log('----------------------------');
 });
+
 
 // delete
 // var userDelSql = 'DELETE FROM userinfo WHERE id = ?';
