@@ -78,6 +78,7 @@ connection.connect(function(err) {
 
 // query
 var userGetSql = 'SELECT * FROM userinfo';
+
 connection.query(userGetSql, function(err, result) {
 	if (err) {
 		console.log('[SELECT] - ', err.message);
