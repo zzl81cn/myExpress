@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var routes = require('./routes/index'),
-//var users = require('./routes/users');
     reg = require('./routes/reg'),
     login = require('./routes/login'),
     logout = require('./routes/logout');
