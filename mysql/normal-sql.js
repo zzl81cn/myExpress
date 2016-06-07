@@ -49,6 +49,8 @@ connection.connect(function(err) {
 
 
 // Insert data
+//从执行结果可以看出，result中包含一些有用的信息，affectedRows（受影响的行数） insertId（插入的主键ID）等等……
+//有受影响的行数和插入数据的ID，就可以很方便进行后续的一些操作（比如判断是否成功或者继续根据插入数据的ID进行其它操作）
 // var userAddSql = 'INSERT INTO userinfo(Id,UserName,UserPass) VALUES(0,?,?)';
 // var userAddSql_Params = ['zilong', 'Zhou'];
 // var userAddSql_Params2 = ['zhangsan', '5678'];
