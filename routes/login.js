@@ -36,11 +36,13 @@ router.post('/', function(req, res) {
 		if(isRem) {
 			res.cookie('islogin', userName, { maxAge: 60000 });
 		}
-
 		res.locals.username = userName;
 		req.session.username = res.locals.username;
 		console.log('req.session.username is: ' + req.session.username);
+		
+		res.locals.success = "登录成功...";
 		res.redirect('/');
+		
 		return;
 	}
   });              

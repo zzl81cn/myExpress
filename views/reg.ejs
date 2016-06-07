@@ -30,6 +30,7 @@
 <% include footer %>
 
 <script type="text/javascript">
+
   String.prototype.format = function (args) {
     var result = this;
     if (arguments.length > 0) {
@@ -51,7 +52,7 @@
       }
     }
     return result;
-  }
+  };
 
   $(function(){
     $('#btnSub').on('click', function(){

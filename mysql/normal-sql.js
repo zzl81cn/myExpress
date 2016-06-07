@@ -92,7 +92,6 @@ connection.query(userGetSql, function(err, result) {
 	console.log('-----------SELECT-----------');
 	console.log(result);
 	console.log('----------------------------');
-	
 //	Manual traversal result
 	if(result.length>0){
 		var firstResult=result[1];
