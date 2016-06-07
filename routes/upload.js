@@ -59,5 +59,10 @@ router.post('/', function(req, res) {
 		
 		var avatarName = Math.random() + '.' + extName;
 		var newPath = form.uploadDir + avatarName;
-	})
+		console.log(newPath);
+		fs.renameSync(files.fulAvatar.path, newPath);
+	});
+	res.locals.success = '上传成功';
+	res.render('index', {title: TITLE});
 });
+module.exports = router;
