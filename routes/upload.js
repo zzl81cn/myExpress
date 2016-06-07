@@ -51,6 +51,13 @@ router.post('/', function(req, res) {
 			break;
 		}
 		
+		if(extName.length == 0) {
+			res.locals.error = '只支持jpg和png格式的图片';
+			res.render('index', {title: TITLE});
+			return;
+		}
 		
+		var avatarName = Math.random() + '.' + extName;
+		var newPath = form.uploadDir + avatarName;
 	})
 });
