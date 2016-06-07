@@ -95,7 +95,7 @@ connection.query(userGetSql, function(err, result) {
 	
 //	Manual traversal result
 	if(result.length>0){
-		var firstResult=result[0];
+		var firstResult=result[1];
 		console.log('Id:'+firstResult['Id']);
 		console.log('UserName:'+firstResult['UserName']);
 		console.log('UserPass:'+firstResult['UserPass']);

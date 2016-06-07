@@ -53,6 +53,7 @@ pool.getConnection(function(err, connection) {
     });
   };
 
+//  User.getUserNumByName = function(username, callback){connection.query("SQL", [params], function(err, result){if(err){return;}callback(err,result)})};
   User.getUserNumByName = function getUserNumByName(username, callback) {
     var getUserNumByName_Sql = "SELECT COUNT(1) AS num FROM userinfo WHERE UserName = ?";
 

@@ -17,17 +17,16 @@ router.post('/', function(req, res) {
       userPwd = req.body['txtUserPwd'],
       userRePwd = req.body['txtUserRePwd'],      
       md5 = crypto.createHash('md5');
- 
+  
       userPwd = md5.update(userPwd).digest('hex');
 
   var newUser = new User({
       username: userName,
       userpass: userPwd
   });
-
+//  console.log('newUser.username is: ' + newUser.username);
   //检查用户名是否已经存在
-  User.getUserNumByName(newUser.username, function (err, results) {        
-             
+  User.getUserNumByName(newUser.username, function (err, results) {
     if (results != null && results[0]['num'] > 0) {
       err = '用户名已存在';
     }
