@@ -4,11 +4,11 @@
 
 #### 文章链接
 
-			[NodeJS学习笔记][1]
+[NodeJS学习笔记][1]
 
 #### 启动
 
-			npm install && node app
+	npm install && node app
 
 
-[1] http://www.cnblogs.com/zhongweiv/tag/Nodejs/ "NodeJS学习笔记"
+[1]: http://www.cnblogs.com/zhongweiv/tag/Nodejs/ "NodeJS实战：Express+Mongoose+ejs"
