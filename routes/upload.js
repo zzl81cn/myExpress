@@ -36,6 +36,21 @@ router.post('/', function(req, res) {
 //		后缀名
 		var extName = '';
 		
+		switch(files.fulAvatar.type) {
+		case 'image/pjpeg':
+			extName = 'jpg';
+			break;
+		case 'image/jpeg':
+			extName = 'jpg';
+			break;
+		case 'image/png':
+			extName = 'png';
+			break;
+		case 'image/x-png':
+			extName = 'png';
+			break;
+		}
+		
 		
 	})
 });
