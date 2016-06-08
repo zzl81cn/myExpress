@@ -65,4 +65,5 @@ router.post('/', function(req, res) {
 	res.locals.success = '上传成功';
 	res.render('index', {title: TITLE});
 });
+
 module.exports = router;

@@ -9,7 +9,8 @@ var session = require('express-session');
 var routes = require('./routes/index'),
     reg = require('./routes/reg'),
     login = require('./routes/login'),
-    logout = require('./routes/logout');
+    logout = require('./routes/logout'),
+    upload = require('./routes/upload');
 
 
 var subform = require('./routes/subform'),
@@ -46,6 +47,7 @@ app.use('/', routes);
 app.use('/reg', reg);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/upload', upload);
 app.use('/subform', subform);
 app.use('/usesession', usesession);
 app.use('/usecookies', usecookies);
