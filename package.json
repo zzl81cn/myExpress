@@ -12,14 +12,15 @@
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
-    "express-session": "latest",
+    "eventproxy": "^0.3.4",
     "express": "~4.13.1",
+    "express-session": "latest",
+    "formidable": "latest",
     "mongoose": "^4.4.19",
     "morgan": "~1.6.1",
     "mysql": "latest",
     "serve-favicon": "~2.3.0",
     "superagent": "^2.0.0-alpha.3",
-    "formidable" : "latest",
     "utility": "^1.8.0"
   }
 }
