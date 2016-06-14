@@ -13,7 +13,7 @@ app.get('/', function(req, res, next) {
 //	superagent.get(url)
 	superagent.get('https://cnodejs.org/')
 		.end(function(err, sres) {
-//			error process
+//			常规错误处理
 			if(err) {
 				return next(err);
 			}
