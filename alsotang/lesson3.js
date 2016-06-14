@@ -10,6 +10,7 @@ var app = express();
 
 app.get('/', function(req, res, next) {
 //	call superagent to capture the web.
+//	superagent.get(url)
 	superagent.get('https://cnodejs.org/')
 		.end(function(err, sres) {
 //			error process
