@@ -36,5 +36,5 @@ var server = app.listen(3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log('app is listening at http://%s:%s', host, port);
-	console.log('请在浏览器地址栏输入"localhsot:3000/?q=xxx"'+' --"xxx"为你自定义的信息，如名字等');
+	console.log('请在浏览器地址栏输入"localhost:3000/?q=xxx"'+' --"xxx"为你自定义的信息，如名字等任意字符');
 });

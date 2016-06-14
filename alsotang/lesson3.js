@@ -32,6 +32,8 @@ app.get('/', function(req, res, next) {
 		});
 });
 
-var sever = app.listen(3000, function() {
-	console.log("App is listen at localhost:3000");
+var server = app.listen(3000, function() {
+	var host = server.address().address;
+	var port = server.address().port;
+	console.log("App is listen at: " , host, port);
 });
