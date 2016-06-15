@@ -5,7 +5,7 @@
  * @version $Id$
  */
 
-// 首先创建一个测试数据库nodesample，在数据库中建一个userinfo表
+// 首先创建一个测试数据库nodesample，执行如下sql语句，在数据库中建一个userinfo表
 /*
 CREATE DATABASE IF NOT EXISTS nodesample CHARACTER SET UTF8;
 
@@ -51,19 +51,19 @@ connection.connect(function(err) {
 // Insert data
 //从执行结果可以看出，result中包含一些有用的信息，affectedRows（受影响的行数） insertId（插入的主键ID）等等……
 //有受影响的行数和插入数据的ID，就可以很方便进行后续的一些操作（比如判断是否成功或者继续根据插入数据的ID进行其它操作）
-// var userAddSql = 'INSERT INTO userinfo(Id,UserName,UserPass) VALUES(0,?,?)';
-// var userAddSql_Params = ['zilong', 'Zhou'];
-// var userAddSql_Params2 = ['zhangsan', '5678'];
+/* var userAddSql = 'INSERT INTO userinfo(Id,UserName,UserPass) VALUES(0,?,?)';
+ var userAddSql_Params = ['zilong', 'Zhou'];
+ var userAddSql_Params2 = ['zhangsan', '5678'];
 
-// connection.query(userAddSql, userAddSql_Params2, function(err, result) {
-// 	if(err) {
-// 		console.log('[INSERT ERROR] - ', err.message);
-// 		return;
-// 	}
-// 	console.log('----------INSERT----------');
-// 	console.log('INSERT Id:', result);
-// 	console.log('--------------------------');
-// })
+ connection.query(userAddSql, userAddSql_Params2, function(err, result) {
+ 	if(err) {
+ 		console.log('[INSERT ERROR] - ', err.message);
+ 		return;
+ 	}
+ 	console.log('----------INSERT----------');
+ 	console.log('INSERT Id:', result);
+ 	console.log('--------------------------');
+ })*/
 
 
 // Modify data
@@ -93,12 +93,19 @@ connection.query(userGetSql, function(err, result) {
 	console.log(result);
 	console.log('----------------------------');
 //	Manual traversal result
-	if(result.length>0){
+/*	if(result.length>0){
 		var firstResult=result[1];
 		console.log('Id:'+firstResult['Id']);
 		console.log('UserName:'+firstResult['UserName']);
 		console.log('UserPass:'+firstResult['UserPass']);
 
+	};*/
+//	遍历result结果
+	for(var i = 0;i<result.length;i++){
+		var everyResult = result[i];
+		console.log('ID: ' + everyResult['Id']);
+		console.log('UserName: ' + everyResult['UserName']);
+		console.log('UserPass: ' + everyResult['UserPass']);
 	};
 });
 
