@@ -77,18 +77,18 @@ connection.connect(function(err) {
 
 
 // Modify data
-// var userModSql = 'UPDATE userinfo SET UserName = ?, UserPass = ? WHERE Id = ?';
-// var userModSql_Params = ['紫龙', '1234', 1];
+/* var userModSql = 'UPDATE userinfo SET UserName = ?, UserPass = ? WHERE Id = ?';
+ var userModSql_Params = ['紫龙', '1234', 1];
 
-// connection.query(userModSql, userModSql_Params, function(err, result) {
-// 	if(err) {
-// 		console.log('[UPDATE ERROR] - ', err.message);
-// 		return;
-// 	}
-// 	console.log('----------UPDATE----------');
-// 	console.log('UPDATE affectedRows', result.affectedRows);
-// 	console.log('--------------------------');
-// });
+ connection.query(userModSql, userModSql_Params, function(err, result) {
+ 	if(err) {
+ 		console.log('[UPDATE ERROR] - ', err.message);
+ 		return;
+ 	}
+ 	console.log('----------UPDATE----------');
+ 	console.log('UPDATE affectedRows', result.affectedRows);
+ 	console.log('--------------------------');
+ });*/
 
 
 // query data
