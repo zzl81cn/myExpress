@@ -2,8 +2,10 @@
  * Created by zhouzilong on 2016/6/2.
  http://www.cnblogs.com/zhongweiv/p/nodejs_express_webapp.html
  */
-
+//根据CommonJS规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。
+//加载mysql模块
 var mysql = require('mysql');
+
 var mysql_cfg = {
 	host: 'localhost',
 	user: 'root',

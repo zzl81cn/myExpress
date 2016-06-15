@@ -22,6 +22,7 @@ CREATE TABLE `userinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息表';
 */
 
+//加载mysql模块
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
