@@ -22,14 +22,14 @@ CREATE TABLE `userinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息表';
 */
 
-//加载mysql模块
+//加载mysql模块 https://github.com/felixge/node-mysql
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'zzl81cn',
-  database : 'nodesample',
-  port     : '3306' // 默认3306，可以不写。
+  database : 'nodesample'
+//  ,port     : '3306' // 默认3306，可以不写。
 });
 
 
@@ -52,8 +52,17 @@ connection.connect(function(err) {
 // Insert data
 //从执行结果可以看出，result中包含一些有用的信息，affectedRows（受影响的行数） insertId（插入的主键ID）等等……
 //有受影响的行数和插入数据的ID，就可以很方便进行后续的一些操作（比如判断是否成功或者继续根据插入数据的ID进行其它操作）
+/*INSERT Id: OkPacket {
+	  fieldCount: 0,
+	  affectedRows: 1,
+	  insertId: 7,
+	  serverStatus: 2,
+	  warningCount: 0,
+	  message: '',
+	  protocol41: true,
+	  changedRows: 0 }*/
 /* var userAddSql = 'INSERT INTO userinfo(Id,UserName,UserPass) VALUES(0,?,?)';
- var userAddSql_Params = ['zilong', 'Zhou'];
+// var userAddSql_Params = ['zilong', 'Zhou'];
  var userAddSql_Params2 = ['zhangsan', '5678'];
 
  connection.query(userAddSql, userAddSql_Params2, function(err, result) {
@@ -124,7 +133,7 @@ connection.query(userGetSql, function(err, result) {
 // 	console.log('------------------------------');
 // })
 
-
+//断开连接
 connection.end(function(err) {
 	if(err) {
 		return;
