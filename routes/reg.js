@@ -1,5 +1,8 @@
 /**
- * Created by zhouzilong on 2016/6/2.
+ * Registers module
+ * 
+ * @Authors zhouzilong
+ * @Date 2016/6/2.
  */
 var express = require('express'),
     router = express.Router(),
