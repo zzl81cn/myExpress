@@ -1,6 +1,6 @@
 /**
  * 
- * @authors Your Name (you@example.org)
+ * @authors zzl81cn
  * @date    2016-06-01 16:34:26
  * @version $Id$
  */

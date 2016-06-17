@@ -1,4 +1,6 @@
-/*在Express框架上利用utility内置工具实现md5转码,当在浏览器中访问
+/*
+ * @Authors zzl81cn
+ * alsotang 在Express框架上利用utility内置工具实现md5转码,当在浏览器中访问
  *  http://localhost:3000/?q=xxx 时，输出 xxx 的 md5 值
 */
 
