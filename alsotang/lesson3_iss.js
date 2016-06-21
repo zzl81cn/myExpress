@@ -11,7 +11,7 @@ var app = express();
 app.get('/', function(req, res, next) {
 //	call superagent to capture the web.
 //	superagent.get(url)
-	superagent.get('https://cnodejs.org/')
+	superagent.get('http://www.ishadowsocks.net/')
 		.end(function(err, sres) {
 //			常规错误处理
 			if(err) {
@@ -20,18 +20,20 @@ app.get('/', function(req, res, next) {
 //			sres.text 里面存储着网页的 html 内容，将它传给 cheerio.load 之后
 //			就可以得到一个实现了 jquery 接口的变量，我们习惯性地将它命名为 `$`
 //			剩下就都是 jquery 的内容了
-
-			var $ch = cheerio.load(sres.text);
+			var $ = cheerio.load(sres.text);
 			var items = [];
-			$ch('#topic_list .topic_title').each(function(idx, element) {
-				var $element = $ch(element);
+			$('#free .col-lg-4').each(function(idx, element) {
+				var $element = $(element);
 				items.push({
-					title: $element.attr('title'),
-					href: $element.attr('href')
+					// serAdd: $element.text(),
+					// serPort: $element.text(),
+					// pwd: $element.text(),
+					// creptoType: $element.text()
+					detail: $element.text()
 				});
 			});
 			res.send(items);
-			console.log(items);
+			// console.log(items);
 		});
 });
 
