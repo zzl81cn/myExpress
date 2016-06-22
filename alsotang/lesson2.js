@@ -1,7 +1,7 @@
 /*
  * @Authors zzl81cn
  * alsotang 在Express框架上利用utility内置工具实现md5转码,当在浏览器中访问
- *  http://localhost:3000/?q=xxx 时，输出 xxx 的 md5 值
+ *  http://localhost:3000/?q=xxx 时，输出 xxx 相对应的 md5 值
 */
 
 // 这句的意思就是引入 `express` 模块，并将它赋予 `express` 这个变量等待使用。
