@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
 		return;
 	} else {
 		if(isRem) {
-			res.cookie('islogin', userName, { maxAge: 60000 });
+			res.cookie('islogin', userName, { maxAge: 30000 });
 		}
 		res.locals.username = userName;
 		req.session.username = res.locals.username;
