@@ -20,7 +20,8 @@ app.get('/', function(req, res, next) {
 			//sres.text 里面存储着网页的 html 内容，将它传给 cheerio.load 之后就可以得到一个实现了 jquery 接口的变量，我们习惯性地将它命名为 `$`剩下就都是 jquery 的内容了
 
 			var $ch = cheerio.load(sres.text);
-			var items = [];
+			var items;
+			items = [];
 			$ch('#topic_list .topic_title').each(function(idx, element) {
 				var $element = $ch(element);
 				items.push({
