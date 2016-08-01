@@ -47,9 +47,32 @@ superagent.get(cnodeUrl).end(function(err, sres) {
 		...
 		]
 	*/
+	//用 js 写过异步的同学应该都知道，如果你要并发异步获取两三个地址的数据，并且要在获取到数据之后，对这些数据一起进行利用的话，常规的写法是自己维护一个计数器。
+	//先定义一个 var count = 0，然后每次抓取成功以后，就 count++。如果你是要抓取三个源的数据，由于你根本不知道这些异步操作到底谁先完成，那么每次当抓取成功的时候，就判断一下 count === 3。当值为真时，使用另一个函数继续完成操作。例如：
+	//(function(){
+	//   var count = 0;
+	//   var result = {};
+	//   $.get('http://data1_source', function(data){
+	//     result.data1 = data;
+	//     count++;
+	//     handler();
+	//   })
+	//   ...
+	//   $.get('http://data_n', function(){...})
+	//   function handle(){
+	//     if(count ==== 3){
+	//       var html = fuck(result.data1, result.data2, ...);
+	//       render(html);
+	//     }
+	//   }
+	// })();
 	//得到topicUrls之后
 	var ep = eventproxy();
 
+	// eventproxy 提供了不少其他场景所需的 API，但最最常用的用法就是以上的这种，即：
+	// 先 var ep = new eventproxy(); 得到一个 eventproxy 实例。
+	// 告诉它你要监听哪些事件，并给它一个回调函数。ep.all('event1', 'event2', function (result1, result2) {})。
+	// 在适当的时候 ep.emit('event_name', eventData)。
 	ep.after('topic_html', topicUrls.length, function(topics){
 		topics = topics.map(function(topicPair){
 			var topicUrl = topicPair[0];
