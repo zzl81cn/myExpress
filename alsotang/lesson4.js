@@ -11,7 +11,8 @@ var express = require('express')
 // http://nodejs.org/api/url.html
 var url = require('url');
 
-var cnodeUrl = "https://cnodejs.org";
+//var cnodeUrl = "https://cnodejs.org";
+var cnodeUrl = "http://localhost/cnode/";
 
 superagent.get(cnodeUrl).end(function(err, sres) {
 	if(err) {
@@ -73,6 +74,11 @@ superagent.get(cnodeUrl).end(function(err, sres) {
 	// 先 var ep = new eventproxy(); 得到一个 eventproxy 实例。
 	// 告诉它你要监听哪些事件，并给它一个回调函数。ep.all('event1', 'event2', function (result1, result2) {})。
 	// 在适当的时候 ep.emit('event_name', eventData)。
+
+	// 此处传给ep.after()的是'topic_html'事件，当达到topicUrls的数量时，将所有topics传入callback
+	// topics 是个数组，包含了 40 次 ep.emit('topic_html', pair) 中的那 40 个 pair
+	// map:和forEach非常相似，都是用来遍历数组中的每一项值的，用来遍历数组中的每一项；
+	// 区别：map的回调函数中支持return返回值；return的是啥，相当于把数组中的这一项变为啥（并不影响原来的数组，只是相当于把原数组克隆一份，把克隆的这一份的数组中的对应项改变了）；
 	ep.after('topic_html', topicUrls.length, function(topics){
 		topics = topics.map(function(topicPair){
 			var topicUrl = topicPair[0];
@@ -81,13 +87,15 @@ superagent.get(cnodeUrl).end(function(err, sres) {
 			return ({
 				title: $('.topic_full_title').text().trim(),
 				href: topicUrl,
-				comment1: $('.reply_content').eq(0).text().trim(),
+				comment1: $('.reply_content').eq(0).text().trim()
 			});
 		});
 		console.log('final:');
 		console.log(topics);
 	});
 
+	// 不管是forEach还是map 都支持第二个参数值，第二个参数的意思是把匿名回调函数中的this进行修改。
+	// forEach 方法按升序为数组中含有效值的每一项执行一次callback 函数
 	topicUrls.forEach(function(topicUrl){
 		superagent.get(topicUrl).end(function(err, res){
 			console.log('fetch ' + topicUrl + 'successful');
