@@ -12,6 +12,7 @@ var express = require('express')
 var url = require('url');
 
 //var cnodeUrl = "https://cnodejs.org";
+//clone cnodejs page.
 var cnodeUrl = "http://localhost/cnode/";
 
 superagent.get(cnodeUrl).end(function(err, sres) {
