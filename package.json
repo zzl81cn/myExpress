@@ -24,6 +24,7 @@
     "utility": "^1.8.0"
   },
   "devDependencies": {
-    "async": "^2.0.1"
+    "async": "^2.0.1",
+    "should": "^10.0.0"
   }
 }
