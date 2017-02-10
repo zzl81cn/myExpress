@@ -19,11 +19,25 @@ var app = express();
 */
 app.get('/', function(req, res) {
 	var q = req.query.q;
+	// res.send(q);
 
 	var md5Value = utility.md5(q);
-	res.send(md5Value);
-	// res.send('Hello World!');
+	res.send('<h3>'+md5Value+'</h3>');
+	res.send('Hello World!');
 });
+app.post('/post', function (req, res) {
+	res.send('This is post method response.')
+})
+app.put('/put', function (req, res) {
+	res.send('This is put method response.')
+})
+app.delete('/delete', function (req, res) {
+	res.send('This is delete method response.')
+})
+
+// Serving static files in Express
+app.use('/static', express.static('../public/avatar'));
+// 直接访问localhost:xx/static/xx.jpg
 
 /*定义好我们 app 的行为之后，让它监听本地的 3000 端口。这里的第二个函数是个回调函数，
  * 会在 listen 动作成功后执行，我们这里执行了一个控制台的命令行输出操作，告诉我们监听动作已完成。
@@ -31,9 +45,11 @@ app.get('/', function(req, res) {
 
 //app.listen(3000);
 
-var server = app.listen(3000, function() {
+var server = app.listen(3001, function() {
 	var host = server.address().host;
 	var port = server.address().port;
 	console.log('app is listening at http://%s:%s', host, port);
 	console.log('请在浏览器地址栏输入"localhost:3000/?q=xxx"'+' --"xxx"为你自定义的信息，如名字等任意字符');
+
+	console.log('浏览器输入"localhost:3000/static/baiduNaotusnap.png"可以访问静态资源。')
 });

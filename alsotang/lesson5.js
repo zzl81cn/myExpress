@@ -53,26 +53,3 @@ async.mapLimit(urls, 5, function(url, callback){
     console.log(result);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

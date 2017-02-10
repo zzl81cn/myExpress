@@ -1,11 +1,11 @@
 /**
  * http://usejsdoc.org/
  */
-var express = require('express')
-	,superagent = require('superagent')
-	,cheerio = require('cheerio')
+var express = require('express'),
+	superagent = require('superagent'),
+	cheerio = require('cheerio'),
 
-	,eventproxy = require('eventproxy');
+	eventproxy = require('eventproxy');
 
 // nodejs lib url,url 模块是 Node.js 标准库里面的
 // http://nodejs.org/api/url.html
