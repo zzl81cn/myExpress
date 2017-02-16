@@ -17,6 +17,7 @@ request(url[1], function (error, response, body) {
 	}
 });
 
+// node_spider.js 有纯http模块的请求示例
 
 /*var http = require('http'),
 	opts = {
