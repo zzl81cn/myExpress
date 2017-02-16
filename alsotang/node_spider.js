@@ -13,7 +13,7 @@ var data = "";
 var req = http.request(url, function(res){
     //设置显示编码
     res.setEncoding('utf8');
-    //数据是 chunked 发送，意思就是一段一段发送过来的
+    //数据是 chunked 发送，意思就是一块一块发送过来的
     //再用data串接起来
     //res.on('data', function(chunk){
     // () => {} ES6
