@@ -7,9 +7,9 @@
 
 // 首先创建一个测试数据库nodesample，执行如下sql语句，在数据库中建一个userinfo表
 /*
-CREATE DATABASE IF NOT EXISTS nodesample CHARACTER SET UTF8;
+CREATE DATABASE IF NOT EXISTS myexpress CHARACTER SET UTF8;
 
-USE nodesample;
+USE myexpress;
 
 SET FOREIGN_KEY_CHECKS=0;
 
