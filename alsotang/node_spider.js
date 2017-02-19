@@ -6,7 +6,7 @@
 var http = require('http');
 
 // var url = "http://localhost/cnode/";
-var url = "http://www.baidu.com";
+var url ="http://www.baidu.com";
 
 var data = "";
 //创建一个请求

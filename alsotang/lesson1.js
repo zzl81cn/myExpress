@@ -12,9 +12,7 @@ const http = require('http');
 
 var server = http.createServer(function (req, res) {
 	res.writeHead(200, {'Conent-Type': 'text/html;charset=utf-8'});
-	res.end('HelloWorld!\nHello!', function () {
-		alert('ok!')
-	});
+	res.end('HelloWorld!\nHello!');
 });
 server.listen(3000);
 
