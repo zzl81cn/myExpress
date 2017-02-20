@@ -19,8 +19,14 @@
     "mongoose": "^4.4.19",
     "morgan": "~1.6.1",
     "mysql": "latest",
+    "request": "^2.79.0",
     "serve-favicon": "~2.3.0",
     "superagent": "^2.0.0-alpha.3",
     "utility": "^1.8.0"
+  },
+  "devDependencies": {
+    "async": "^2.0.1",
+    "http-proxy": "^1.16.2",
+    "should": "^10.0.0"
   }
 }
