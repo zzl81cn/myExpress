@@ -1,7 +1,7 @@
 /*
  * @Authors zzl81cn
- * alsotang 在Express框架上利用utility内置工具实现md5转码,当在浏览器中访问
- *  http://localhost:3000/?q=xxx 时，输出 xxx 相对应的 md5 值
+ * 1.alsotang 在Express框架上利用utility内置工具实现md5转码,当在浏览器中访问 http://localhost:3000/?q=xxx 时，输出 xxx 相对应的 md5 值
+ * 2.static resource
 */
 
 // 这句的意思就是引入 `express` 模块，并将它赋予 `express` 这个变量等待使用。
@@ -46,7 +46,7 @@ app.use('/static', express.static('../public/avatar'));
 //app.listen(3000);
 
 var server = app.listen(3001, function() {
-	var host = server.address().host;
+	var host = 'localhost';
 	var port = server.address().port;
 	console.log('app is listening at http://%s:%s', host, port);
 	console.log('请在浏览器地址栏输入"localhost:3000/?q=xxx"'+' --"xxx"为你自定义的信息，如名字等任意字符');
