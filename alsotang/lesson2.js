@@ -25,6 +25,7 @@ app.get('/', function(req, res) {
 	res.send('<h3>'+md5Value+'</h3>');
 	res.send('Hello World!');
 });
+// 可以使用postman来测试以下URL
 app.post('/post', function (req, res) {
 	res.send('This is post method response.')
 })
@@ -45,7 +46,7 @@ app.use('/static', express.static('../public/avatar'));
 
 //app.listen(3000);
 
-var server = app.listen(3001, function() {
+var server = app.listen(3000, function() {
 	var host = 'localhost';
 	var port = server.address().port;
 	console.log('app is listening at http://%s:%s', host, port);
