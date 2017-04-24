@@ -27,7 +27,8 @@ http.get('http://www.baidu.com', function (res) {
 
 const http = require("http")
 const url = "http://www.haorooms.com/post/nodejs_rmyyong",
-	url2 = "http://www.google.com";
+	url2 = "http://www.google.com",
+	url3 = "http://rap.taobao.org/mockjsdata/13161/multiselect_h";
 /*
 http.get(url,(res)=>{
 	var html = ""
@@ -42,7 +43,7 @@ res.on("end",()=>{
 	console.log(`获取数据失败: ${e.message}`)
 })*/
 
-http.get(url, function (res) {
+http.get(url3, function (res) {
 	var html = '';
 	res.on("data", function (data) {
 		html += data;
