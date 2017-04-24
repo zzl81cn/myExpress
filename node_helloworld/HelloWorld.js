@@ -44,6 +44,7 @@ function start() {
 	http.createServer((request, response) => {
 		console.log('Request is received!');
 		response.writeHead(200, {'Content-Type': 'text/plain'});
+		// 结束相应进程
 		response.end('Hello World\n');
 	}).listen(3000);
 	
