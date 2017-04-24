@@ -9,33 +9,40 @@ var express = require('express'),
 var app = express();
 
 app.get('/', function(req, res, next) {
-//	call superagent to capture the web.
-//	superagent.get(url)
-	superagent.get('https://cnodejs.org/')
+	// call superagent to capture the web.
+	// let tempURL = req.query.superagent;
+	// superagent.get(url)
+	superagent
+		.get('https://cnodejs.org/')
+		// .get(tempURL)
 		.end(function(err, sres) {
-//			常规错误处理
+			// 常规错误处理
 			if(err) {
 				return next(err);
-			}
-			//sres.text 里面存储着网页的 html 内容，将它传给 cheerio.load 之后就可以得到一个实现了 jquery 接口的变量，我们习惯性地将它命名为 `$`剩下就都是 jquery 的内容了
+			} else {
+				//sres.text 里面存储着网页的 html 内容，将它传给 cheerio.load 之后就可以得到一个实现了 jquery 接口的变量，我们习惯性地将它命名为 `$`剩下就都是 jquery 的内容了
 
-			var $ch = cheerio.load(sres.text);
-			var items;
-			items = [];
-			$ch('#topic_list .topic_title').each(function(idx, element) {
-				var $element = $ch(element);
-				items.push({
-					title: $element.attr('title'),
-					href: $element.attr('href')
+				var $ch = cheerio.load(sres.text);
+				var items = [];
+				$ch('#topic_list .topic_title').each(function(idx, element) {
+					var $element = $ch(element);
+					items.push({
+						title: $element.attr('title'),
+						href: $element.attr('href')
+					});
 				});
-			});
-			res.send(items);
-			console.log(items);
+				// 发送各种类型的响应。
+				res.send(items);
+				// 结束响应进程。
+				res.end();
+				console.log(items);
+			}
 		});
 });
 
 var server = app.listen(3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;
+	// console.log('Please input http://localhost:3000/?superagent=https://cnodejs.org');
 	console.log("App is listen at: " , host, port);
 });
