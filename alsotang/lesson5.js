@@ -32,7 +32,7 @@ var concurrentCount = 0;
 var fetchUrl = function(url, callback) {
     var delay = parseInt((Math.random() * 100000000) * 2000, 10);
     concurrentCount++;
-    console.log("Now concurrentCount is: ", concurrentCount, 'Now fetch is: ', url, 'Time consuming: ' + delay + 'millisecond');
+    console.log("Now concurrentCount is: ", concurrentCount, 'Now fetch is: ', url, 'Time consuming: ' + delay + ' millisecond');
     setTimeout(function(){
         concurrentCount--;
         callback(null, url + ' html content');
