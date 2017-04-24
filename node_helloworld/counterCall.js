@@ -8,6 +8,6 @@
 var counter1 = require('./counter');
 var counter2 = require('./counter');
 
-console.log(counter1.count());
-console.log(counter2.count());
-console.log(counter2.count());
+console.log('Call counter1 ', counter1.count());
+console.log('Call counter2 ', counter2.count());
+console.log('Call counter2 ', counter2.count());
