@@ -28,7 +28,7 @@
 //This is a useful default that helps finding memory leaks.
 // For ES5.1
 /*var EventEmitter = require('events').EventEmitter;
-var ee =new EventEmitter();*/
+var myEmitter =new EventEmitter();*/
 // For ES6 or better
 const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {}
@@ -91,39 +91,45 @@ console.log('issuccess2 ', isSuccess2);*/
 
 //Step 3 Adds a once listener function
 /*EventEmitter.once(event, listener)  为事件注册一次性监听，触发一次后移除监听
- 参数1：event  字符串，事件名
- 参数2：回调函数
+参数1：event  字符串，事件名
+参数2：回调函数
 
- 从上面示例代码执行结果可以看出，用emitter.once给some_events注册一个监听后，分两轮调用emitter.emit触发，
- 第二轮会返回false；这表示用emitter.once注册监听和用前面讲的emitter.on注册监听略有不同，
+从上面示例代码执行结果可以看出，用emitter.once给some_events注册一个监听后，分两轮调用emitter.emit触发，
+第二轮会返回false；这表示用emitter.once注册监听和用前面讲的emitter.on注册监听略有不同，
 
- emitter.once注册监听是一次性监听，当触发一次后，会移除该监听！
- */
-/*ee.once('some_events', function (foo, bar) {
-	console.log("The first listener, param foo=" + foo, "bar=" + bar);
+emitter.once注册监听是一次性监听，当触发一次后，会移除该监听！*/
+
+myEmitter.once('someEvents', function (foo, bar) {
+	console.log('The first listener, param foo= ' + foo, 'bar= ' + bar);
 });
-
 console.log('The first once listener');
-let isSuccess = ee.emit('some_events', 'zilong', 'zhou');
-console.log(isSuccess);
-
+let isSuccess = myEmitter.emit('someEvents', 'zilong', 'zhou');
+if(isSuccess) {
+	console.log('第一次调用成功。')
+} else {
+	console.log('第一次调用失败！')
+}
 console.log('The second once listener');
-console.log('//因为使用了xx.once()对some_events注册的监听，所以触发一次便会移除该监听，导致后面未触发。');
-let isSuccess2 = ee.emit('some_events', 'zilong', 'zhou');
-console.log(isSuccess2);*/
+console.log('因为使用了xx.once()对someEvents注册的监听，所以触发一次便会移除该监听，导致后面未触发。');
+let isSuccess2 = myEmitter.emit('someEvents', 'xx', 'zz');
+if(isSuccess2) {
+	console.log('第二次调用成功。')
+} else {
+	console.log('第二次调用失败！')
+}
 
 
 //Step 4
 /*用emitter.on给some_events注册了一个监听后，我用emiiter.removeListener移除some_events的监听，
  随后再调用emitter.emit去触发，最后发现不是按我想像的在进行！*/
-/*ee.on('someEvents', function (foo, bar) {
+/*myEmitter.on('someEvents', function (foo, bar) {
 	console.log("The first foo is: " + foo + ",bar: " + bar);
 });
-ee.removeListener('someEvents', function () {
+myEmitter.removeListener('someEvents', function () {
 	console.log("Listener remove succeed!");
 });
 console.log("The first test!");
-ee.emit('someEvents', 'zilong', 'zhou');*/
+myEmitter.emit('someEvents', 'zilong', 'zhou');*/
 // Rewrite step4
 /*let connectionFunc = (stream) => {
 	console.log('Have a connections!');
