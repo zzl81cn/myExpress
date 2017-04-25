@@ -39,29 +39,28 @@ const myEmitter = new MyEmitter();
  参数1：event  字符串，事件名
  参数2：回调函数*/
 
-/*ee.on('some_events', function(foo, bar) {
- console.log("The first listener,param foo=" + foo, "bar=" + bar);
- });
+/*myEmitter.on('some_events', function (foo, bar) {
+    console.log("The first listener,param foo=" + foo, "bar=" + bar);
+});
 
- console.log('The first.');
- ee.emit('some_events', 'zilong', 'zhou');
+console.log('The first.');
+myEmitter.emit('some_events', 'zilong', 'zhou');
 
- console.log('The second.');
- ee.emit('some_events', 'rong', 'fire');
- */
+console.log('The second.');
+myEmitter.emit('some_events', 'rong', 'fire');*/
 
 // rewrite step 1
-/*
-var listenerFunc = function (first, second) {
-	console.log('The first listener, params first = ' + first, 'second = ' + second)
+/*const listenerFunc = function (first, second) {
+	console.log('The first listener, params first = ' + first, ' second = ' + second);
 };
-ee.on('someEvent', listenerFunc);
+myEmitter.on('someEvent', listenerFunc);
 // someEvent注册了事件监听，emit函数会
-var isSuccess = ee.emit('someEvent', 'zilong', 'zhou');
-ee.emit('someEvent', 'xx', 'zz');
-console.log('someEvent apply ' + isSuccess);
-// console.log(ee.listeners('someEvent').length);
-*/
+let isSuccess = myEmitter.emit('someEvent', 'zilong', 'zhou');
+myEmitter.emit('someEvent', 'xx', 'zz');
+// someEvent apply emit is true.
+console.log('someEvent apply is ' + isSuccess);
+console.log('myEmitter.listeners length ' + myEmitter.listeners('someEvent').length);
+console.log('Step 1 end.');*/
 
 
 //Step2
@@ -75,20 +74,20 @@ console.log('someEvent apply ' + isSuccess);
  而other_events并没有注册监听，emit函数会返回一个false，表示该事件没有监听；当然也可以不用管这个返回值！
  */
 
-/*ee.on('some_events', function(foo, bar) {
- console.log("The first event listener, param foo=" + foo, "bar=" + bar);
- });
- var isSuccess = ee.emit('some_events', 'zilong', 'zhou');
+console.log('Step 2 start.');
+myEmitter.on('someEvents', function (foo, bar) {
+	console.log('The first event listener, param foo= ' + foo, 'bar= ' + bar);
+});
+let isSuccess = myEmitter.emit('someEvents', 'zilong', 'zhou');
+myEmitter.on('someEvents', function (foo, bar) {
+	console.log('The second event listener, param foo= ' + foo, 'bar= ' + bar);
+});
+myEmitter.emit('someEvents', 'ron', 'fire');
+let isSuccess2 = myEmitter.emit('otherEvents', 'zilong', 'zhou');
 
- ee.on('some_events', function(foo, bar) {
- console.log("The second event listener, param foo=" + foo, "bar=" + bar);
- });
- ee.emit('some_events', 'ron', 'fire');
+console.log('isSuccess ', isSuccess);
+console.log('issuccess2 ', isSuccess2);
 
- var isSuccess2 = ee.emit('other_events', 'zilong', 'zhou');
-
- console.log(isSuccess);
- console.log(isSuccess2);*/
 
 
 //Step 3 Adds a once listener function
