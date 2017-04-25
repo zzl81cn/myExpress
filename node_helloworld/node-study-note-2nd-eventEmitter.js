@@ -74,7 +74,7 @@ console.log('Step 1 end.');*/
  而other_events并没有注册监听，emit函数会返回一个false，表示该事件没有监听；当然也可以不用管这个返回值！
  */
 
-console.log('Step 2 start.');
+/*console.log('Step 2 start.');
 myEmitter.on('someEvents', function (foo, bar) {
 	console.log('The first event listener, param foo= ' + foo, 'bar= ' + bar);
 });
@@ -86,8 +86,7 @@ myEmitter.emit('someEvents', 'ron', 'fire');
 let isSuccess2 = myEmitter.emit('otherEvents', 'zilong', 'zhou');
 
 console.log('isSuccess ', isSuccess);
-console.log('issuccess2 ', isSuccess2);
-
+console.log('issuccess2 ', isSuccess2);*/
 
 
 //Step 3 Adds a once listener function
