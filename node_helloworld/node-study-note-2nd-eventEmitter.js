@@ -99,7 +99,7 @@ console.log('issuccess2 ', isSuccess2);*/
 
 emitter.once注册监听是一次性监听，当触发一次后，会移除该监听！*/
 
-myEmitter.once('someEvents', function (foo, bar) {
+/*myEmitter.once('someEvents', function (foo, bar) {
 	console.log('The first listener, param foo= ' + foo, 'bar= ' + bar);
 });
 console.log('The first once listener');
@@ -116,7 +116,7 @@ if(isSuccess2) {
 	console.log('第二次调用成功。')
 } else {
 	console.log('第二次调用失败！')
-}
+}*/
 
 
 //Step 4
@@ -140,6 +140,23 @@ myEmitter.removeListener('connection', () => {
 });
 // myEmitter.removeListener('connection', connectionFunc);
 myEmitter.emit('connection', connectionFunc);*/
+/*myEmitter.on('someEvents', function (foo, bar) {
+	console.log('The first foo is foo:' + foo + ' bar: ' + bar);
+});
+myEmitter.removeListener('someEvents', function () {
+	console.log('Listener remove succeed!')
+});
+console.log('The first test!');
+myEmitter.emit('someEvents', 'zilong', 'zhou');*/
+// Rewrite step4
+let connectionFunc = (stream) => {
+	console.log('Have a connections!')
+};
+myEmitter.on('connection', connectionFunc);
+myEmitter.removeListener('connection', () => {
+	console.log('Remove eventListener successfuly!')
+});
+
 
 
 //Step 5 emitter.removeListener(event, listener)
