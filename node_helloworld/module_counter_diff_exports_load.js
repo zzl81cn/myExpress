@@ -10,5 +10,5 @@
 var Counter = require('./module_counter_diff_exports');
 
 // counter.printNextCount();
-var countObj = new Counter()
+var countObj = new Counter();
 countObj.printNextCount();
