@@ -12,7 +12,7 @@
 
 // Node.js采用的Javascript引擎是来自Google Chrome的V8；运行在浏览器外不用考虑头疼的Javascript兼容性问题
 
-// 采用单线程、异步IO与事件驱动的设计来实现高并发（异步事件也在一定程度上增加了开发和调试的难度）；
+/*采用单线程、异步IO与事件驱动的设计来实现高并发（异步事件也在一定程度上增加了开发和调试的难度）；*/
 
 // Node.js内建一个HTTP服务器，所以对于网站开发来说是一个好消息；
 
@@ -122,14 +122,6 @@ if(isSuccess2) {
 //Step 4
 /*用emitter.on给some_events注册了一个监听后，我用emitter.removeListener移除some_events的监听，
  随后再调用emitter.emit去触发，最后发现不是按我想像的在进行！*/
-/*myEmitter.on('someEvents', function (foo, bar) {
-	console.log("The first foo is: " + foo + ",bar: " + bar);
-});
-myEmitter.removeListener('someEvents', function () {
-	console.log("Listener remove succeed!");
-});
-console.log("The first test!");
-myEmitter.emit('someEvents', 'zilong', 'zhou');*/
 // Rewrite step4
 /*let connectionFunc = (stream) => {
 	console.log('Have a connections!');
@@ -149,13 +141,14 @@ myEmitter.removeListener('someEvents', function () {
 console.log('The first test!');
 myEmitter.emit('someEvents', 'zilong', 'zhou');*/
 // Rewrite step4
-let connectionFunc = (stream) => {
+/*let connectionFunc = (stream) => {
 	console.log('Have a connections!')
 };
 myEmitter.on('connection', connectionFunc);
 myEmitter.removeListener('connection', () => {
 	console.log('Remove eventListener successfuly!')
 });
+myEmitter.emit('connection', connectionFunc);*/
 
 
 
