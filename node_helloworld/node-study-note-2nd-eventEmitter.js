@@ -120,7 +120,7 @@ if(isSuccess2) {
 
 
 //Step 4
-/*用emitter.on给some_events注册了一个监听后，我用emiiter.removeListener移除some_events的监听，
+/*用emitter.on给some_events注册了一个监听后，我用emitter.removeListener移除some_events的监听，
  随后再调用emitter.emit去触发，最后发现不是按我想像的在进行！*/
 /*myEmitter.on('someEvents', function (foo, bar) {
 	console.log("The first foo is: " + foo + ",bar: " + bar);
