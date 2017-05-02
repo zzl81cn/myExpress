@@ -1,4 +1,6 @@
-
+/*
+* http://www.cnblogs.com/zhongweiv/p/nodejs_express.html
+* */
 
 var express = require('express');
 var router = express.Router();
@@ -20,8 +22,7 @@ router.get('/', function(req, res, next) {
 	if (req.cookies.islogin) {
 		console.log('cookies:' + req.cookies.islogin);
 		req.session.islogin = req.cookies.islogin;
-	}
-	if (req.session.username) {
+	} else if (req.session.username) {
 		console.log('username:' + req.session.username);
 		res.locals.username = req.session.username;	
 	} else {
