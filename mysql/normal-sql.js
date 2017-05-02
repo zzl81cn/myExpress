@@ -41,6 +41,9 @@ connection.connect(function(err) {
 	}
 	console.log('[connnetion connnect] succeed!');
 });
+//
+// 结尾处都会调用一个connection.end()方法,这个方法connection.connect()对应，一个开始，一个结束！
+//
 
 // Test connection
 // connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
