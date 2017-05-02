@@ -1,8 +1,8 @@
 /**
  * 
- * @authors Your Name (you@example.org)
+ * @authors zzl81cn (you@example.org)
  * @date    2016-06-02 11:52:19
- * @version $Id$
+ * @version v1.0
  */
 
 var mysql = require('mysql');
@@ -21,8 +21,7 @@ function handleDisconnect() {
 			console.log('断线重连……' + new Date());
 			setTimeout(handleDisconnect, 2000);
 			return;
-		}
-		console.log('Connect success!');
+		} else console.log('Connect success!');
 	});
 	connection.on('error', function(err) {
 		console.log('db error', err);
