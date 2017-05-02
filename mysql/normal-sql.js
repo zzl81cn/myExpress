@@ -53,6 +53,7 @@ connection.connect(function(err) {
 // Insert data
 //从执行结果可以看出，result中包含一些有用的信息，affectedRows（受影响的行数） insertId（插入的主键ID）等等……
 //有受影响的行数和插入数据的ID，就可以很方便进行后续的一些操作（比如判断是否成功或者继续根据插入数据的ID进行其它操作）
+// Console info
 /*INSERT Id: OkPacket {
 	  fieldCount: 0,
 	  affectedRows: 1,
@@ -75,21 +76,30 @@ connection.connect(function(err) {
  	console.log('INSERT Id:', result);
  	console.log('--------------------------');
  })*/
+// Add 20170502
+/*var userAddSql = 'INSERT INTO userinfo(Id, UserName, UserPass) VALUES(0, ?, ?)';
+var userAddSqlParams = ['haomiao', 'liu'];
+connection.query(userAddSql, userAddSqlParams, function (err, result) {
+	if(err) {
+		console.log('[INSERT ERR] - ', err.message);
+		return;
+	} console.log('--------INSERT--------');
+	console.log('INSERT Id: ', result);
+	console.log('----------------------');
+});*/
 
 
 // Modify data
-/* var userModSql = 'UPDATE userinfo SET UserName = ?, UserPass = ? WHERE Id = ?';
- var userModSql_Params = ['紫龙', '1234', 1];
-
- connection.query(userModSql, userModSql_Params, function(err, result) {
- 	if(err) {
- 		console.log('[UPDATE ERROR] - ', err.message);
- 		return;
- 	}
- 	console.log('----------UPDATE----------');
- 	console.log('UPDATE affectedRows', result.affectedRows);
- 	console.log('--------------------------');
- });*/
+/*var userModSql = 'UPDATE userinfo SET UserName = ?, UserPass = ? WHERE Id = ?',
+	userModSqlParams = ['郝苗', 'Liu', 2];
+connection.query(userModSql, userModSqlParams, function (err, result) {
+	if(err) {
+		console.log('[UPDATE ERROR] - ', err.message);
+		return;
+	} console.log('------------UPDATE--------------');
+	console.log('UPDATE affectedRows', result.affectedRows);
+	console.log('--------------------------------');
+});*/
 
 
 // query data
