@@ -3,6 +3,7 @@
  * @authors zzl81cn
  * @date    2016-06-01 16:34:26
  * @version $Id$
+ * http://www.cnblogs.com/zhongweiv/p/nodejs_mysql.html
  */
 
 // 首先创建一个测试数据库nodesample，执行如下sql语句，在数据库中建一个userinfo表
@@ -23,16 +24,16 @@ CREATE TABLE `userinfo` (
 */
 
 //加载mysql模块 https://github.com/felixge/node-mysql
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'zzl81cn',
-  database : 'nodesample'
-//  ,port     : '3306' // 默认3306，可以不写。
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: 'zzl81cn',
+	database: 'nodesample'
+	// ,port     : '3306' // 默认3306，可以不写。
 });
 
-
+// Test connect
 connection.connect(function(err) {
 	if(err) {
 		console.log('[query] - :' + err);
@@ -92,9 +93,11 @@ connection.connect(function(err) {
 
 
 // query data
+// 1
 var userGetSql = 'SELECT * FROM userinfo';
-
+// 2
 connection.query(userGetSql, function(err, result) {
+	// 3
 	if (err) {
 		console.log('[SELECT] - ', err.message);
 		return;
@@ -102,21 +105,22 @@ connection.query(userGetSql, function(err, result) {
 	console.log('-----------SELECT-----------');
 	console.log(result);
 	console.log('----------------------------');
-//	Manual traversal result
-/*	if(result.length>0){
-		var firstResult=result[1];
+	// Manual traversal result
+	/*if(result.length>0){
+		var firstResult=result[0];
 		console.log('Id:'+firstResult['Id']);
 		console.log('UserName:'+firstResult['UserName']);
 		console.log('UserPass:'+firstResult['UserPass']);
 
 	};*/
-//	遍历result结果
-	for(var i = 0;i<result.length;i++){
-		var everyResult = result[i];
+	// 4 遍历result结果
+	for(let i = 0;i<result.length;i++){
+		let everyResult = result[i];
+		console.log('Result ' + i);
 		console.log('ID: ' + everyResult['Id']);
 		console.log('UserName: ' + everyResult['UserName']);
 		console.log('UserPass: ' + everyResult['UserPass']);
-	};
+	}
 });
 
 
