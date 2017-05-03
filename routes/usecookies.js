@@ -10,7 +10,7 @@ var router = express.Router();
 
 //清除cookies
 // res.clearCookie('islogin');
-  
+
 //清除session
 // req.session.destroy();
 

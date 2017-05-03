@@ -12,8 +12,9 @@ router.get('/', function(req, res) {
 	if(req.session.islogin) {
 		console.log('usesession:' + req.session.islogin);
 		res.locals.islogin = req.session.islogin;
+	} else {
+		res.render('usesession', {title: '使用session示例'});
 	}
-	res.render('usesession', {title: '使用session示例'});
 });
 
 router.post('/', function(req, res) {

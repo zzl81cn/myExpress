@@ -11,7 +11,7 @@ var crypto = require('crypto');
 
 // default state page
 router.get('/', function(req, res) {
-	res.render('usecrypto', {title: 'An encrypted string'});
+	res.render('usecrypto', {title: '加密字符串示例'});
 });
 
 // request page
