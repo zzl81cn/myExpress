@@ -20,15 +20,25 @@ var subform = require('./routes/subform'),
 
 var app = express();
 
-// view engine setup
+/**view engine setup
+ * app.set(name, value)
+ * 把名字为name的项的值设为value，用于设置参数
+ * 设置了模版文件夹的路径；主要清楚__dirname的意思就可以了，它是node.js中的全局变量，表示取当前执行文件的路径
+ */
 app.set('views', path.join(__dirname, 'views'));
+// 设置使用的模版引擎，我们使用的ejs
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+/**
+ * 用这个方法来使用中间件，因为express依赖于connect，有大量的中间件，可以通过app.use来使用；
+ * path参数可以不填，默认为'/'  (项目中用到的就不分别解释了，用到的时候自已查一API的中间件部分)
+ * */
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(express.static(path.join(__dirname, 'public'))); 这一句中可能要注意一下，express.static( )是处理静态请求的，设置了public文件，public下所有文件都会以静态资料文件形式返回（如样式、脚本、图片素材等文件）
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser('zzl81cn'));
