@@ -19,7 +19,6 @@ router.get('/', function (req, res) {
  * req.body：我用来接收POST提交的参数
  * req.params：两种都能接收到
  **/
-
 router.post('/', function (req, res) {
 	// var userName = req.query.txtUserName,
 	//     userPwd = req.query.txtUserPwd,
