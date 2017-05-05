@@ -28,13 +28,13 @@ app.get('/', function(req, res) {
 // 可以使用postman来测试以下URL
 app.post('/post', function (req, res) {
 	res.send('This is post method response.')
-})
+});
 app.put('/put', function (req, res) {
 	res.send('This is put method response.')
-})
+});
 app.delete('/delete', function (req, res) {
 	res.send('This is delete method response.')
-})
+});
 
 // Serving static files in Express
 app.use('/static', express.static('../public/avatar'));
