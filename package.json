@@ -15,6 +15,7 @@
     "eventproxy": "^0.3.4",
     "express": "~4.13.1",
     "express-session": "latest",
+    "express-useragent": "^1.0.7",
     "formidable": "latest",
     "mongoose": "^4.4.19",
     "morgan": "~1.6.1",
