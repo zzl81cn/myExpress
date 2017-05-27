@@ -11,13 +11,30 @@
 /*const http = require('http');
 
 const server = http.createServer(function (req, res) {
-	let deviceAgent = req.headers['user-agent'];
+	let deviceAgent = req.headers['user-agent'].toLowerCase();
 	res.writeHead(200, {'Cotent-Type': 'text/html;charset=utf-8'});
-	res.end(JSON.stringify(deviceAgent));
+	let agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+	console.log('AgentID is: ' + agentID);
+	/!*if(agentID) {
+		console.log('UserAgent platform is: ' + agentID)
+	} else {
+		console.log(deviceAgent.toLowerCase());
+		res.end(JSON.stringify(deviceAgent));
+	}*!/
+	switch (agentID) {
+		case 'iphone,iphone':
+			res.end('You have a apple iphone.');
+			break;
+		case 'android,android':
+			res.end('You have a google android.');
+			break;
+		default:
+			res.end(JSON.stringify(deviceAgent));
+	}
 });
-server.listen(3001);
+server.listen(3000);
 
-console.log('Server is running, listen at http://localhost:3001');*/
+console.log('Server is running, listen at http://localhost:3000');*/
 
 
 // For Express use express-useragent
@@ -80,7 +97,8 @@ const useragent = require('express-useragent');
 
 app.use(useragent.express());
 app.get('/', function(req, res){
-	res.send(JSON.stringify(req.useragent));
+	res.send(JSON.stringify(req.useragent.platform));
 });
-app.listen(3001);
+app.listen(3000);
+console.log('Server is running, listen at http://localhost:3000');
 

@@ -24,6 +24,7 @@
     // 也可以在html页面上做跳转。但为了速度，应该在后台nodejs服务上，judge一下
     // 如果在html页上的话。那时页面可能已经下载下来了。白白浪费流量，还占带宽
 
+    // 不过使用express-useragent更方便些
     // Use express-useragent
     {
     	"isAuthoritative": true,
