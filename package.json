@@ -1,6 +1,6 @@
 {
-  "name": "myExpress",
-  "version": "0.0.0",
+  "name": "my-express",
+  "version": "0.5.0",
   "private": true,
   "repository": "https://github.com/zzl81cn/myExpress",
   "scripts": {
