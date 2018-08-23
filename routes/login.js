@@ -9,7 +9,7 @@ var express = require('express'),
     TITLE_LOGIN = '登录';
 
 router.get('/', function(req, res) {
-  res.render('login',{title:TITLE_LOGIN});
+  res.render('login',{title: TITLE_LOGIN});
 });
 
 router.post('/', function(req, res) {
@@ -22,14 +22,14 @@ router.post('/', function(req, res) {
       
     if(results == '') {
 		res.locals.error = '用户不存在';
-		res.render('login',{title:TITLE_LOGIN});
+		res.render('login',{title: TITLE_LOGIN});
 		return;
     }
     
 	userPwd = md5.update(userPwd).digest('hex');
 	if(results[0].UserName != userName || results[0].UserPass != userPwd){
 		res.locals.error = '用户名或密码有误';
-		res.render('login',{title:TITLE_LOGIN});
+		res.render('login',{title: TITLE_LOGIN});
 		console.log(1);
 		return;
 	} else {

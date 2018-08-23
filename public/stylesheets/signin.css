@@ -6,8 +6,8 @@ body {
     margin-bottom: 19px;
 }
 body {
-    // padding-top: 40px;
-    // padding-bottom: 40px;
+    /* padding-top: 40px; */
+    /* padding-bottom: 40px; */
     background-color: #eee;
 }
 
@@ -37,11 +37,11 @@ body {
 }
 .form-signin input[type="text"] {
     margin-bottom: 10px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    /* border-bottom-left-radius: 0; */
+    /* border-bottom-right-radius: 0; */
 }
 .form-signin input[type="password"] {
     margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    /* border-top-left-radius: 0; */
+    /* border-top-right-radius: 0; */
 }

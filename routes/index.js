@@ -1,6 +1,6 @@
 /**
  * Create 20160602
- * Modify by zzl81cn 20170503
+ * Modify by zzl81cn 20170503, 20180823
  * http://www.cnblogs.com/zhongweiv/p/nodejs_express.html
  * */
 
@@ -19,6 +19,8 @@ const router = express.Router();
 		]
 	});
 });*/
+
+/* web 应用中处于请求-响应循环流程中的中间件，一般被命名为 next 的变量。 */
 
 router.get('/', function (req, res, next) {
 	if (req.cookies.islogin) {

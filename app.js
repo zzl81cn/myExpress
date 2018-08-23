@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var routes = require('./routes/index'),
+// 在此引入各route路由级中间件，供下面app.use()调用中间件
+var index = require('./routes/index'),
     reg = require('./routes/reg'),
     login = require('./routes/login'),
     logout = require('./routes/logout'),
     upload = require('./routes/upload');
+var test = require('./routes/test');
 
 
 var subform = require('./routes/subform'),
@@ -52,7 +54,7 @@ app.use(session({
 	}
 ));
 
-app.use('/', routes);
+app.use('/', index);
 //app.use('/users', users);
 app.use('/reg', reg);
 app.use('/login', login);
@@ -62,6 +64,7 @@ app.use('/subform', subform);
 app.use('/usesession', usesession);
 app.use('/usecookies', usecookies);
 app.use('/usecrypto', usecrypto);
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -94,7 +97,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var server = app.listen(3000, function() {
+var server = app.listen(3000, 'localhost', function() {
   // console.log("Server is starting...");
   var host = server.address().address;
   var port = server.address().port;
