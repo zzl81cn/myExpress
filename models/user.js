@@ -1,7 +1,7 @@
-/**
- * Created by zhouzilong on 2016/6/2.
- http://www.cnblogs.com/zhongweiv/p/nodejs_express_webapp.html
- */
+/*
+  Created by zhouzilong on 2016/6/2.
+  http://www.cnblogs.com/zhongweiv/p/nodejs_express_webapp.html
+*/
 //Model layer
 //根据CommonJS规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。
 //加载mysql模块
@@ -14,6 +14,7 @@ var mysql_cfg = {
 	database: 'nodesample'
 };
 
+// 创建连接池
 var pool = mysql.createPool(mysql_cfg);
 pool.on('connection', function(connection) {
   connection.query('SET SESSION auto_increment_increment=1');
@@ -26,14 +27,15 @@ function User(user) {
 module.exports = User;
 
 pool.getConnection(function(err, connection) {
-/*   var useDbSql = "USE" + DB_NAME;
-   connection.query(useDbSql, function(err) {
-     if (err) {
-       console.log("USE Error: " + err.message);
-     }
-     console.log('USE success!');
-   });*/
+  /* var useDbSql = "USE" + DB_NAME;
+  connection.query(useDbSql, function(err) {
+    if (err) {
+      console.log("USE Error: " + err.message);
+    }
+    console.log('USE success!');
+  }); */
 
+  // 保存数据
   User.prototype.save = function save(callback) {
 	  
     var user = {

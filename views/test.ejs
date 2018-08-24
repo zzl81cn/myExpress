@@ -7,5 +7,18 @@
     <% users.forEach(function(user){ %>
       <h6><%= user.username %></h6>
     <% }) %>
+    <% tmpData.forEach(function(data){%>
+      <h6><%= data.testName %></h6>
+    <%})%>
   </body>
 </html>
+<!--
+    1.<%= %>
+　　这个标签在接到收到title: '<h1>Express</h1>'时，从显示效果来看，他直接输出HTML标签到页面上，输出的是转义后的变量值
+
+　　2.<%- %> 　　
+　　而这个标签，从显示效果上看，他没有直接输出HTML代码到页面上，输出的是没有转义后的变量值
+
+　　3.<% %>
+　　而这个标签，从显示上看，他循环了出来参数中的值，标签中是javascript逻辑代码，注意括号的开闭合
+ -->
