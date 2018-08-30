@@ -5,6 +5,7 @@
  * */
 
 const express = require('express');
+// 可使用 express.Router 类创建模块化、可挂载的路由句柄。
 const router = express.Router();
 
 /* GET home page. */
