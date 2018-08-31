@@ -20,7 +20,9 @@ router.get('/', function(req, res) {
 
 // 利用expres.Router()进行路由的拆分，可以去掉“/api”前缀，由app.use()统一设置
 router.get('/help', function(req, res) {
-  res.send('help')
+  // res.send('help');
+  /* 使用模板引擎时 */
+  res.render('help');
 })
 
 module.exports = router;
