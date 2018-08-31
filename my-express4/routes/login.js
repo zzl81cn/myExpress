@@ -18,4 +18,9 @@ router.get('/', function(req, res) {
   res.render('login', {title: 'login page2'});
 });
 
+// 利用expres.Router()进行路由的拆分，可以去掉“/api”前缀，由app.use()统一设置
+router.get('/help', function(req, res) {
+  res.send('help')
+})
+
 module.exports = router;
