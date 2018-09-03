@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
   // request('http://www.baidu.com', function(error, response, body){
   request(reqURL.easyDynamic, function(error, response, body){
     if(!error && response.statusCode == 200) {
-      console.log(body); // Show the HTML for the baidu homepage.
+      console.log(body); // Show the data on console for this API.
     }
   })
   res.render('login', {title: 'login page2'});
