@@ -2,16 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{{ pagename }}</title>
+    <title>{{ string }}</title>
   </head>
   <body>
-    <h3>{{ pagename|title }}</h3>
+    <h>{{ pagename|title }}</h>
     <ul>
     {% for author in authors %}
       <li{% if loop.first %} class="first"{% endif %}>
         {{ author }}
       </li>
     {% endfor %}
+    </ul>
+    <p>{{data.string}}</p>
+    <ul>
+      {% for item in data.array %}
+      <li>{{ item.foo }} {{ item.bar }}</li>
+      {% endfor %}
     </ul>
   </body>
 </html>
