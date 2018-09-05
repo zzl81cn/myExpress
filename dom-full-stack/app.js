@@ -18,6 +18,11 @@ app.set('view engine', 'swig');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view cache', false);
 
+swig.setFilter('plusstr', function(input, option) {
+  let data = input.toString() + '123';
+  return data;
+})
+
 swig.setDefaults({cache: false});
 
 

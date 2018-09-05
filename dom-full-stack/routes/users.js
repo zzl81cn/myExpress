@@ -12,6 +12,10 @@ router.get('/', function(req, res, next) {
     name: 'orient',
     list: [1,3,5],
     testDate: new Date(),
+    selectData: [
+      {id: 1, val: 1, name: 'first'},
+      {id: 2, val: 2, name: 'second'}
+    ],
     forLoop: [
       'loop.index：当前循环的索引（1开始）',
       'loop.index0：当前循环的索引（0开始）',

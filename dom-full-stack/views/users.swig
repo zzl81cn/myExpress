@@ -3,6 +3,13 @@
 <!-- 注意我这里并没有复写{% block head %}{% endblock %}这个块 -->
 {% block content %}
   <div>
+    <select name="" id="testSelect">
+      {% for item in selectData %}
+        <option value={{item.val}}>{{item.name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
     <h3>hello swig</h3>
     <p>swig extends</p>
     <!-- if -->
@@ -10,6 +17,8 @@
       hello orient
     {% endif %}
 
+    <h3>{{name|plusstr}}</h3>
+    
     <!-- if else -->
     {% if name === 'orient' %}
       hello orient again
