@@ -17,8 +17,9 @@
       hello orient
     {% endif %}
 
+    <h3>使用自定义filter</h3>
     <h3>{{name|plusstr}}</h3>
-    
+
     <!-- if else -->
     {% if name === 'orient' %}
       hello orient again
