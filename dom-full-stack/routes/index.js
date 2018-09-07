@@ -28,7 +28,15 @@ router.get('/', function(req, res, next) {
 
   })
 });
-
+router.get('/testApi', function(req, res, next) {
+  res.json({name: 'testAPI'});
+  /* 
+    这里返回：
+    {
+      "name": "testAPI"
+    }
+  */
+})
 /* 
   example
   {
