@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
       authors: ['Paul', 'Jim', 'Jane'],
       data: result
     });
-
+    // res.json({data: result})
   })
 });
 router.get('/testApi', function(req, res, next) {
