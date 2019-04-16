@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 // 在此引入各route路由级中间件，供下面app.use()调用中间件
-var index = require('./routes/index'),
+var index = require('./routes'),
     reg = require('./routes/reg'),
     login = require('./routes/login'),
     logout = require('./routes/logout'),
@@ -44,7 +44,11 @@ app.use(logger('dev'));
 */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.static(path.join(__dirname, 'public'))); 这一句中可能要注意一下，express.static( )是处理静态请求的，设置了public文件，public下所有文件都会以静态资料文件形式返回（如样式、脚本、图片素材等文件）
+
+/*
+  app.use(express.static(path.join(__dirname, 'public')));
+  这一句中可能要注意一下，express.static( )是处理静态请求的，设置了public文件，public下所有文件都会以静态资料文件形式返回（如样式、脚本、图片素材等文件）
+  */
 app.use(express.static(path.join(__dirname, 'public')));
 // 配置cookie-parser和express-session
 app.use(cookieParser('zzl81cn'));
@@ -59,6 +63,16 @@ app.use(session({
 ));
 
 app.use('/', index);
+/*
+* // 也可以统一用routerMap方式
+* var routerMap = require('./routerMap');
+* app.use(routerMap);
+*
+* // routerMap
+* var index = require('./routes'),
+* app.use('/', index)
+*
+* */
 //app.use('/users', users);
 app.use('/reg', reg);
 app.use('/login', login);

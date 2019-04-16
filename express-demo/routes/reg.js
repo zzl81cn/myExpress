@@ -7,7 +7,7 @@
 var express = require('express'),
     router = express.Router(),
     
-    User = require('../models/user.js'),
+    User = require('../../models/user.js'),
     crypto = require('crypto'),
     TITLE_REG = '注册';
 
