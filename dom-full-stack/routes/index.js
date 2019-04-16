@@ -14,6 +14,44 @@ function getPromise(url) {
   })
 }
 
+/* 
+const request = require('request');
+
+const serviceCommon = require('../../common/common');
+
+const host = serviceCommon.getApiURL();
+
+const url = {
+    getBranchList: '/admin/out/getBranchList', // 所有子公司接口
+    getNoticePage: '/admin/out/getNoticePage', // 处置公告接口
+    getFinanceNoticePage: '/admin/out/getFinanceNoticePage', // 金融超市公告
+    getAssetPage: '/admin/out/getAssetPage', // 新增资产包
+}
+
+// For simple operation
+function getPromisePost(url, params) {
+    return new Promise((resolve, reject) => {
+        request.post({url: url, form: params}, (error, responese, body) => {
+            console.log("indexBiz : url,params");
+            console.log(url,params);
+            if (!error && responese.statusCode == 200) {
+                resolve(body);
+            } else {
+                reject(error);
+            }
+        })
+    })
+}
+var indexBiz = function() {
+  this.getBranchList = function() {
+      let getBranchListURL = `${host}${url.getBranchList}`;
+      return getPromisePost(getBranchListURL);
+  };
+}
+
+module.exports = new indexBiz();
+*/
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   let url = 'http://rap2api.taobao.org/app/mock/data/382300';
