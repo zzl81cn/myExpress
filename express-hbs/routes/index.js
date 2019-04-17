@@ -117,8 +117,8 @@ router.get('/data', async(req, res, next) => {
     })
   }) */
 
-  var api1 = request('http://rap2api.taobao.org/app/mock/data/911898');
-  var api2 = request('http://rap2api.taobao.org/app/mock/data/911898');
+  /* var api1 = request('http://rap2api.taobao.org/app/mock/data/911898');
+  var api2 = request('http://rap2api.taobao.org/app/mock/data/911898'); */
   Promise
     .all([indexBiz.getUser(), indexBiz.getData()])
     .then(function(results) {
