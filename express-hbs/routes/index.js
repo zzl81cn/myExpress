@@ -1,20 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
+let common  = require('../bin/common');
+let logger = common.getLogger('index-router');
 const indexBiz = require('../biz/indexBiz');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   indexBiz.getUser().then((data) => {
-    console.log('Call api/rap is ok', data);
+    logger.info(data);
   });
   indexBiz.getData().then((data) => {
-    console.log('Call api/mock is ok', data);
+    logger.info(data);
     const result = JSON.parse(data);
     const resData = result.array;
 
-    console.log('Call api/mock is ok', resData);
+    logger.info(resData);
 
     res.render('index', { title: 'test + hbs', data: resData});
   });
