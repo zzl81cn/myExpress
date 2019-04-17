@@ -32,7 +32,6 @@ function getPromiseGet(url) {
             logger.info(response)
             if (!error && response.statusCode == 200) {
                 logger.info('ok')
-                
                 resolve(body);
             } else {
                 reject(error);

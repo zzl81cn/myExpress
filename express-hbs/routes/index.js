@@ -13,7 +13,7 @@ const indexBiz = require('../biz/indexBiz');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  indexBiz.getData().then((data) => {
+  /* indexBiz.getData().then((data) => {
     logger.info(data);
     const result = JSON.parse(data);
     const resData = result.data;
@@ -21,7 +21,22 @@ router.get('/', function(req, res, next) {
     logger.info(resData);
 
     res.render('index', { title: 'test + hbs', data: resData});
-  });
+  }); */
+  let endData = {};
+
+  Promise
+    .all([indexBiz.getUser(), indexBiz.getData()])
+    .then(function(results) {
+      logger.info(results);
+      endData.user = JSON.parse(results[0]);
+      // let tempUser = JSON.parse(results[0]);
+      // endData.user = tempUser.data;
+      endData.data = JSON.parse(results[1]);
+      // let tempData = JSON.parse(results[1]);
+      // endData.data = tempData.data;
+      logger.info(endData);
+      res.render('index', { title: 'test + hbs', data: endData});
+    });
 });
 
   let myEmitter = new MyEmitter();
@@ -72,7 +87,7 @@ router.get('/data', async(req, res, next) => {
     myEmitter.emit('change');
   }).catch(new Function()); */
 
-  indexBiz.getData().then((data) => {
+  /* indexBiz.getData().then((data) => {
     logger.info('result2', data);
     logger.info('indexCount', indexCount);
     let result2 = JSON.parse(data);
@@ -80,7 +95,7 @@ router.get('/data', async(req, res, next) => {
     logger.info('getData', endData);
     indexCount++;
     myEmitter.emit('change');
-  }).catch(new Function());
+  }).catch(new Function()); */
 
   /* const urlArr = {
     rap1: 'http://rap2api.taobao.org/app/mock/data/912468',
@@ -102,15 +117,21 @@ router.get('/data', async(req, res, next) => {
     })
   }) */
 
-  /* var api1 = request('http://rap2api.taobao.org/app/mock/data/911898');
+  var api1 = request('http://rap2api.taobao.org/app/mock/data/911898');
   var api2 = request('http://rap2api.taobao.org/app/mock/data/911898');
   Promise
-    .all([api1, api2])
+    .all([indexBiz.getUser(), indexBiz.getData()])
     .then(function(results) {
-      logger.info(results)
-        // endData.banner = JSON.parse(results[0]);
-        // endData.list = JSON.parse(results[1]);
-    }); */
+      logger.info(results);
+      endData.user = JSON.parse(results[0]);
+      // let tempUser = JSON.parse(results[0]);
+      // endData.user = tempUser.data;
+      endData.data = JSON.parse(results[1]);
+      // let tempData = JSON.parse(results[1]);
+      // endData.data = tempData.data;
+      logger.info(endData);
+      res.json(endData)
+    });
 
 });
 
