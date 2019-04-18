@@ -1,13 +1,13 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{data.user.data.name}}</p>
-    <p>{{data.user.data.name}}</p>
+<p>Welcome to {{data.user.name}}</p>
+    <p>{{data.user.name}}</p>
 {{#if data}}
-    <p>1234{{data.success}}</p>
+    <p>1234 {{data.user.name}}</p>
 {{else}}
     <p>tset</p>
 {{/if}}
 <ul>
-    {{#each data.data.data}}
+    {{#each data.data}}
         <li> <span class="item-number">{{number}}</span>{{this.string}} {{placeholder}}</li>
     {{/each}}
 </ul>

@@ -4,7 +4,7 @@ var request = require('request');
 var async = require('async');
 var rp = require('request-promise');
 const EventEmitter = require('events');
-class MyEmitter extends EventEmitter{};
+class MyEmitter extends EventEmitter{}
 
 let common  = require('../bin/common');
 let logger = common.getLogger('index-router');
@@ -27,25 +27,40 @@ router.get('/', function(req, res, next) {
   Promise
     .all([indexBiz.getUser(), indexBiz.getData()])
     .then(function(results) {
-      logger.info(results);
-      endData.user = JSON.parse(results[0]);
-      // let tempUser = JSON.parse(results[0]);
-      // endData.user = tempUser.data;
-      endData.data = JSON.parse(results[1]);
-      // let tempData = JSON.parse(results[1]);
-      // endData.data = tempData.data;
-      logger.info(endData);
+      // logger.info(results);
+        /*endData.user = JSON.parse(results[0]);
+        endData.data = JSON.parse(results[1]);
+        logger.info(JSON.stringify(endData));
+        res.json(endData);*/
+        const resLength = results.length;
+        for(let i = 0; i < resLength; i++) {
+            let tempData = JSON.parse(results[i]);
+            // endData.push(tempData);
+            switch (i) {
+                case 0:
+                    endData.user = tempData.data;
+                    break;
+                case 1:
+                    endData.data = tempData.data;
+                    break;
+                default:
+                    logger.error(i);
+            }
+        };
+        logger.info(JSON.stringify(endData));
       res.render('index', { title: 'test + hbs', data: endData});
+    }, function (error) {
+        logger.error(error)
     });
 });
 
-  let myEmitter = new MyEmitter();
 // api for list
-router.get('/data', async(req, res, next) => {
+router.get('/data', function(req, res, next) {
   let indexCount = 0;
   let endData = {};
   // let endData = [];
 
+  /*let myEmitter = new MyEmitter();
   myEmitter.on('change', () => {
     if (indexCount == 2) {
       logger.info('全部请求完毕', indexCount, endData)
@@ -56,8 +71,7 @@ router.get('/data', async(req, res, next) => {
     }
   });
 
-  /* rp('http://rap2api.taobao.org/app/mock/data/911898')
-    .then(function(htmlString) {
+   rp('http://rap2api.taobao.org/app/mock/data/911898').then(function(htmlString) {
       logger.info('result1',htmlString);
       logger.info('indexCount', indexCount);
       let result1 = JSON.parse(htmlString);
@@ -65,9 +79,12 @@ router.get('/data', async(req, res, next) => {
       logger.info('getUser', endData);
       indexCount++;
       myEmitter.emit('change');
-    });
-  rp('http://rap2api.taobao.org/app/mock/data/912468')
-    .then(function(htmlString) {
+    }, function (error) {
+       logger.error(err)
+   }).catch(function (err) {
+       logger.error(err)
+   });
+  rp('http://rap2api.taobao.org/app/mock/data/912468').then(function(htmlString) {
       logger.info('result1',htmlString);
       logger.info('indexCount', indexCount);
       let result2 = JSON.parse(htmlString);
@@ -75,9 +92,13 @@ router.get('/data', async(req, res, next) => {
       logger.info('getUser', endData);
       indexCount++;
       myEmitter.emit('change');
-    }) */
+    }, function (error) {
+      logger.error(err)
+  }).catch(function (err) {
+      logger.error(err)
+  });*/
 
-  /* indexBiz.getUser().then((data) => {
+  /*indexBiz.getUser().then((data) => {
     logger.info('result1',data);
     logger.info('indexCount', indexCount);
     let result1 = JSON.parse(data);
@@ -85,9 +106,9 @@ router.get('/data', async(req, res, next) => {
     logger.info('getUser', endData);
     indexCount++;
     myEmitter.emit('change');
-  }).catch(new Function()); */
+  }).catch(new Function());
 
-  /* indexBiz.getData().then((data) => {
+   indexBiz.getData().then((data) => {
     logger.info('result2', data);
     logger.info('indexCount', indexCount);
     let result2 = JSON.parse(data);
@@ -95,42 +116,37 @@ router.get('/data', async(req, res, next) => {
     logger.info('getData', endData);
     indexCount++;
     myEmitter.emit('change');
-  }).catch(new Function()); */
+  }).catch(new Function());*/
 
-  /* const urlArr = {
-    rap1: 'http://rap2api.taobao.org/app/mock/data/912468',
-    rap2: 'http://rap2api.taobao.org/app/mock/data/911898',
-  };
-  const urlLength = urlArr.length;
-  async.each(urlArr, (item) => {
-    logger.info('url item', item);
-    indexBiz.getTest(item).then((data) => {
-      logger.info(data)
-      let tmpResult = JSON.parse(data);
-      endData.push(tmpResult.data);
-      logger.info(endData)
-      indexCount++;
-      logger.info(indexCount)
-      if(urlLength == indexCount) {
-        res.json({data: endData})
-      }
-    })
-  }) */
-
-  /* var api1 = request('http://rap2api.taobao.org/app/mock/data/911898');
-  var api2 = request('http://rap2api.taobao.org/app/mock/data/911898'); */
+  /* promise all*/
   Promise
     .all([indexBiz.getUser(), indexBiz.getData()])
     .then(function(results) {
-      logger.info(results);
-      endData.user = JSON.parse(results[0]);
-      // let tempUser = JSON.parse(results[0]);
-      // endData.user = tempUser.data;
+      // logger.info(results);
+      /*endData.user = JSON.parse(results[0]);
       endData.data = JSON.parse(results[1]);
-      // let tempData = JSON.parse(results[1]);
-      // endData.data = tempData.data;
-      logger.info(endData);
-      res.json(endData)
+      logger.info(JSON.stringify(endData));
+      res.json(endData);*/
+      const resLength = results.length;
+      for(let i = 0; i < resLength; i++) {
+          let tempData = JSON.parse(results[i]);
+          // endData.push(tempData);
+          switch (i) {
+              case 0:
+                  endData.user = tempData.data;
+                  break;
+              case 1:
+                  endData.data = tempData.data;
+                  break;
+              default:
+                  logger.error(i);
+          }
+      };
+        logger.info(JSON.stringify(endData));
+        res.json(endData);
+
+    }, function (error) {
+        logger.error(error)
     });
 
 });
