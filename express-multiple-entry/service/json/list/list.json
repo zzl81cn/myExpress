@@ -1,0 +1,56 @@
+{
+  "string": "★★",
+  "number": 4,
+  "boolean": false,
+  "regexp": "iL6",
+  "function": 0.6721558702806512,
+  "array": [
+    {
+      "foo": 1,
+      "bar": "★★★★★"
+    },
+    {
+      "foo": 2,
+      "bar": "★★★★★★★★"
+    },
+    {
+      "foo": 3,
+      "bar": "★★★★★★★★★"
+    },
+    {
+      "foo": 4,
+      "bar": "★★★★★★★"
+    },
+    {
+      "foo": 5,
+      "bar": "★★★★★★★"
+    },
+    {
+      "foo": 6,
+      "bar": "★★★★★★★★★"
+    },
+    {
+      "foo": 7,
+      "bar": "★★"
+    },
+    {
+      "foo": 8,
+      "bar": "★★★★★★"
+    },
+    {
+      "foo": 9,
+      "bar": "★★★★★★★★"
+    }
+  ],
+  "items": [
+    1,
+    true,
+    "hello",
+    "PSb9vq0zSl"
+  ],
+  "object": {
+    "foo": 1,
+    "bar": "★★★★★★★★★"
+  },
+  "placeholder": "Bopw Qqvrjpg Jrix Bmuf Vjuf Ipcmvj"
+}
