@@ -1,0 +1,93 @@
+const fs = require("fs");
+const path = require('path');
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const glob = require("glob");
+
+
+let envMode = "dev";
+
+let entry = getEntry( path.resolve(__dirname,'public/js/app'));
+let webpackConfig = {
+    entry:entry,
+    output: {
+      path: path.resolve(__dirname,'public/dist'), //文件输出目录
+      publicPath: "/dist/",
+      filename: "js/[name].js"
+    },
+    module:{
+        loaders: [{
+            test: /\.(png|jpg)$/,
+            loader: "url-loader",
+            query: {
+                mimetype: "image/png" ,
+                limit:8192,
+                publicPath:'/p2p/dist/',
+                name: "imgs/[name].[ext]"
+            }
+        },{
+            test : /\.css$/,
+            loader : ExtractTextPlugin.extract('style-loader', 'css-loader')
+        }],
+    },
+    plugins: [
+        new CleanWebpackPlugin([path.resolve(__dirname,'public/dist')]),
+        // new ExtractTextPlugin('css/[name].css')
+    ]
+}
+/* !function(){
+    if(envMode === "dev"){
+      console.log("webpack : 这是开发模式，不进行压缩。");
+      webpackConfig.devtool= "source-map";
+    }else{
+        webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
+            mangle: false,
+            compress: {
+                warnings: false
+            },
+            output: {
+                screw_ie8: false
+            }
+  
+        }));
+    }
+  }(); */
+  
+;function getEntry(){
+    let args = Array.prototype.slice.call(arguments)
+        ,dir = args[0]
+        ,_files = args[1]
+        ,matchs=[]
+        ,dirList = fs.readdirSync(dir)
+        ;
+    if(typeof(_files)=='undefined'){
+      _files={};
+      _files[md5("common")] = path.resolve(path.resolve(__dirname)+'/public/js/common/common');
+    }
+    dirList.forEach(function(item){
+        let itemPath = path.resolve(dir,item);
+        if(fs.statSync(itemPath).isDirectory()){
+            getEntry(itemPath,_files);
+        }else{
+            matchs = item.match(/(.+)\.js$/);
+            if(matchs){
+                _files[md5(matchs[1])] = itemPath;
+            }
+        }
+    });
+    return _files;
+}
+/* 返回多入口文件遍历结果数组（主文件名部分，不含扩展名） */
+function getRoot(viewsPath) {
+    let files = glob.sync(viewsPath);
+    let entries = [];
+    let entry, basename, extname;
+
+    for (let i = 0; i < files.length; i++) {
+        entry = files[i];
+        extname = path.extname(entry); // 扩展名 eg: .html
+        basename = path.basename(entry, extname); // eg: index
+        entries.push(basename);
+    }
+    return entries;
+}

@@ -9,6 +9,18 @@ const common = require('./bin/common');
 
 var app = express();
 
+// webpack config start
+if(true) {
+  var webpack = require('webpack');
+  var webpackDevMiddleware = require('webpack-dev-middleware');
+  var webpackDevConfig = require('./build/webpack.dev');
+  const compiler = webpack(webpackDevConfig);
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: webpackDevConfig.publicPath,
+    quiet: true
+  }))
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
