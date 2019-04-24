@@ -1,40 +1,60 @@
 const fs = require("fs");
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const glob = require("glob");
 
-
-let envMode = "dev";
-
-let entry = getEntry( path.resolve(__dirname,'public/js/app'));
+const common = require('../bin/common');
+let envMode = common.getEnvMode(); // development || production
+const output = path.resolve(__dirname,'../dist/'); //文件输出目录
+let entry = getEntry(path.resolve(__dirname,'../public/js/app'));
+console.log('entry', entry)
 let webpackConfig = {
-    entry:entry,
+    mode: envMode,
+    entry: entry,
     output: {
-      path: path.resolve(__dirname,'public/dist'), //文件输出目录
-      publicPath: "/dist/",
-      filename: "js/[name].js"
+        publicPath: "/dist/",
+        path: output,
+        filename: "js/[name].js"
+    },
+    resolve:{
+        extensions: [".js"],
+        // root: path.join(__dirname, "/public/")
     },
     module:{
-        loaders: [{
-            test: /\.(png|jpg)$/,
-            loader: "url-loader",
-            query: {
-                mimetype: "image/png" ,
-                limit:8192,
-                publicPath:'/p2p/dist/',
-                name: "imgs/[name].[ext]"
-            }
-        },{
-            test : /\.css$/,
-            loader : ExtractTextPlugin.extract('style-loader', 'css-loader')
-        }],
+        rules: [
+            {
+                test: /\.js$/,
+                loader: "babel-loader",
+                exclude: /node_modules/,
+                include: path.resolve("public/js"),
+            },
+            { test: /\.(handlebars|hbs)$/, loader: "handlebars-loader" }
+            // {
+            //     test: /\.(png|jpg)$/,
+            //     loader: "url-loader",
+            //     query: {
+            //         mimetype: "image/png" ,
+            //         limit:8192,
+            //         publicPath:'/xx/dist/',
+            //         name: "imgs/[name].[ext]"
+            //     }
+            // },
+            // {
+            //     test : /\.css$/,
+            //     loader : ExtractTextPlugin.extract('style-loader', 'css-loader')
+            // }
+        ],
     },
     plugins: [
-        new CleanWebpackPlugin([path.resolve(__dirname,'public/dist')]),
+        // new CleanWebpackPlugin([path.resolve(__dirname,'../dist/')])
+        new CleanWebpackPlugin()
         // new ExtractTextPlugin('css/[name].css')
     ]
-}
+};
+module.exports = webpackConfig;
+// common shift
 /* !function(){
     if(envMode === "dev"){
       console.log("webpack : 这是开发模式，不进行压缩。");
@@ -52,17 +72,17 @@ let webpackConfig = {
         }));
     }
   }(); */
-  
+
+// contain md5 difrent xx-x-x/webpack.config.js line 86 "getEntry .. md5"
 ;function getEntry(){
     let args = Array.prototype.slice.call(arguments)
         ,dir = args[0]
         ,_files = args[1]
         ,matchs=[]
         ,dirList = fs.readdirSync(dir)
-        ;
+    ;
     if(typeof(_files)=='undefined'){
-      _files={};
-      _files[md5("common")] = path.resolve(path.resolve(__dirname)+'/public/js/common/common');
+        _files={};
     }
     dirList.forEach(function(item){
         let itemPath = path.resolve(dir,item);
@@ -71,10 +91,12 @@ let webpackConfig = {
         }else{
             matchs = item.match(/(.+)\.js$/);
             if(matchs){
-                _files[md5(matchs[1])] = itemPath;
+                _files[matchs[1]] = itemPath;
             }
         }
     });
+    // { index: 'D:\\workspaces\\nodejs\\myExpress\\express-multiple-entry\\public\\js\\app\\index.js' }
+    console.log('getEntry _files ', _files);
     return _files;
 }
 /* 返回多入口文件遍历结果数组（主文件名部分，不含扩展名） */

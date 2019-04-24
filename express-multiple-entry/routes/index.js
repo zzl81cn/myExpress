@@ -47,7 +47,7 @@ router.get('/', function(req, res, next) {
                     logger.error(i);
             }
         };
-        logger.info(JSON.stringify(endData));
+        // logger.info(JSON.stringify(endData));
       res.render('index', { title: 'test + hbs', data: endData});
     }, function (error) {
         logger.error(error)

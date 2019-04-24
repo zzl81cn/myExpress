@@ -28,7 +28,7 @@ function getPromisePost(url, params) {
 function getPromiseGet(url) {
     return new Promise((resolve, reject) => {
         let requestStream = request.get({url: url}, (error, response, body) => {
-            logger.info(url, response);
+            // logger.info(url, response);
             logger.info('response.statusCode', response.statusCode);
             if (!error && response.statusCode === 200) {
                 resolve(body);

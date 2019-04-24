@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const common = require('./bin/common');
+let logger4js = common.getLogger("app");
 
 var app = express();
 
 // webpack config start
-if(true) {
+if(common.getEnvMode() === "development") {
+  logger4js.info("This is development && this is webpack dev middleware");
   var webpack = require('webpack');
   var webpackDevMiddleware = require('webpack-dev-middleware');
   var webpackDevConfig = require('./build/webpack.dev');
