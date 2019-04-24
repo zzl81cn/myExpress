@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const glob = require("glob");
 
@@ -54,6 +55,16 @@ let webpackConfig = {
     ]
 };
 module.exports = webpackConfig;
+/* common.getRoot('views/*.hbs').forEach(fileName => {
+    let conf = {
+        template: path.resolve(__dirname, './views/' + fileName + '.hbs'), // html模板路径
+        filename: 'views/' + fileName + '.hbs', // 生成的html存放路径，相对于 path
+        inject: true, // 'head', body, true, false
+        chunks: [fileName]
+    };
+    webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
+}); */
+
 // common shift
 /* !function(){
     if(envMode === "dev"){
@@ -98,18 +109,4 @@ module.exports = webpackConfig;
     // { index: 'D:\\workspaces\\nodejs\\myExpress\\express-multiple-entry\\public\\js\\app\\index.js' }
     console.log('getEntry _files ', _files);
     return _files;
-}
-/* 返回多入口文件遍历结果数组（主文件名部分，不含扩展名） */
-function getRoot(viewsPath) {
-    let files = glob.sync(viewsPath);
-    let entries = [];
-    let entry, basename, extname;
-
-    for (let i = 0; i < files.length; i++) {
-        entry = files[i];
-        extname = path.extname(entry); // 扩展名 eg: .html
-        basename = path.basename(entry, extname); // eg: index
-        entries.push(basename);
-    }
-    return entries;
 }

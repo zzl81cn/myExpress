@@ -13,6 +13,8 @@ const indexBiz = require('../biz/indexBiz');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  // logger.info(req.headers)
+  
   /* indexBiz.getData().then((data) => {
     logger.info(data);
     const result = JSON.parse(data);
