@@ -4,6 +4,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var hbs = require('hbs');
 
 const common = require('./bin/common');
 let logger4js = common.getLogger("app");
@@ -24,8 +25,11 @@ if(common.getEnvMode() === "development") {
 }
 
 // view engine setup
+hbs.registerPartials(__dirname + '/views/app/partials');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view options', {layout: '/app/layout.html'});
+app.set('view engine', 'html');
+app.engine('html', hbs.__express);
 
 app.use(logger('dev'));
 

@@ -15,7 +15,7 @@ let webpackConfig = {
     mode: envMode,
     entry: entry,
     output: {
-        publicPath: "/dist/",
+        publicPath: "/",
         path: output,
         filename: "js/[name].js"
     },
@@ -31,7 +31,7 @@ let webpackConfig = {
                 exclude: /node_modules/,
                 include: path.resolve("public/js"),
             },
-            { test: /\.(handlebars|hbs)$/, loader: "handlebars-loader" }
+            { test: /\.hbs$/, loader: "handlebars-loader" }
             // {
             //     test: /\.(png|jpg)$/,
             //     loader: "url-loader",
@@ -50,7 +50,15 @@ let webpackConfig = {
     },
     plugins: [
         // new CleanWebpackPlugin([path.resolve(__dirname,'../dist/')])
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        // new HtmlWebpackPlugin({
+        //     template: path.resolve(__dirname, '../views/index.hbs'), // html模板路径
+        //     // filename: './views/index.hbs', // 生成的html存放路径，相对于 path
+        //     inject: true, // 'head', body, true, false
+        //     chunks: ['index']
+    
+        // })
+        // new HtmlWebpackPlugin()
         // new ExtractTextPlugin('css/[name].css')
     ]
 };
