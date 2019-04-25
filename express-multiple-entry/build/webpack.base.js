@@ -8,12 +8,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const glob = require("glob");
 
 const common = require('../bin/common');
-let envMode = common.getEnvMode(); // development || production
 const output = path.resolve(__dirname,'../public/dist/'); //文件输出目录
 // let entry = getEntry(path.resolve(__dirname,'../public/js/app'));
 let entry = common.getEntry('../public/js/app', 'app');
 let webpackConfig = {
-    mode: envMode,
+    mode: common.getEnvMode(), // development || production
     entry: entry,
     output: {
         publicPath: "/",
@@ -33,7 +32,7 @@ let webpackConfig = {
                 include: path.resolve("public/js"),
             },
             { test: /\.(hbs|html)$/, loader: "handlebars-loader" },
-            {
+            /* {
                 test: /\.css$/,
                 use: [{
                     loader: MiniCssExtractPlugin.loader
@@ -44,7 +43,7 @@ let webpackConfig = {
                         importLoaders: 1
                     }
                 }]
-            },
+            }, */
             // {
             //     test: /\.(png|jpg)$/,
             //     loader: "url-loader",

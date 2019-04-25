@@ -18,6 +18,7 @@ let common = {
         return serverPort;
     },
     getEnvMode: () => {
+        // console.log('getEnvMode', process.env.NODE_ENV);
         let envMode = appConfig.envMode || "development";
         return envMode;
     },
