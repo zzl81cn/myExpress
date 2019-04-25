@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -9,8 +10,8 @@ const glob = require("glob");
 const common = require('../bin/common');
 let envMode = common.getEnvMode(); // development || production
 const output = path.resolve(__dirname,'../public/dist/'); //文件输出目录
-let entry = getEntry(path.resolve(__dirname,'../public/js/app'));
-console.log('entry', entry)
+// let entry = getEntry(path.resolve(__dirname,'../public/js/app'));
+let entry = common.getEntry('../public/js/app', 'app');
 let webpackConfig = {
     mode: envMode,
     entry: entry,
@@ -20,7 +21,7 @@ let webpackConfig = {
         filename: "js/[name].js"
     },
     resolve:{
-        extensions: [".js"],
+        extensions: [".js", ".css"],
         // root: path.join(__dirname, "/public/")
     },
     module:{
@@ -31,7 +32,19 @@ let webpackConfig = {
                 exclude: /node_modules/,
                 include: path.resolve("public/js"),
             },
-            { test: /\.hbs$/, loader: "handlebars-loader" }
+            { test: /\.(hbs|html)$/, loader: "handlebars-loader" },
+            {
+                test: /\.css$/,
+                use: [{
+                    loader: MiniCssExtractPlugin.loader
+                },{
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: mode==='development',
+                        importLoaders: 1
+                    }
+                }]
+            },
             // {
             //     test: /\.(png|jpg)$/,
             //     loader: "url-loader",
@@ -51,14 +64,6 @@ let webpackConfig = {
     plugins: [
         // new CleanWebpackPlugin([path.resolve(__dirname,'../dist/')])
         new CleanWebpackPlugin(),
-        // new HtmlWebpackPlugin({
-        //     template: path.resolve(__dirname, '../views/index.hbs'), // html模板路径
-        //     // filename: './views/index.hbs', // 生成的html存放路径，相对于 path
-        //     inject: true, // 'head', body, true, false
-        //     chunks: ['index']
-    
-        // })
-        // new HtmlWebpackPlugin()
         // new ExtractTextPlugin('css/[name].css')
     ]
 };
@@ -93,8 +98,9 @@ module.exports = webpackConfig;
   }(); */
 
 // contain md5 difrent xx-x-x/webpack.config.js line 86 "getEntry .. md5"
-;function getEntry(){
-    let args = Array.prototype.slice.call(arguments)
+; function getEntry() {
+    
+    let args = Array.prototype.slice.call(arguments) /* {"0":"D:\\workspaces\\nodejs\\myExpress\\express-multiple-entry\\public\\js\\app"} */
         ,dir = args[0]
         ,_files = args[1]
         ,matchs=[]
@@ -114,7 +120,5 @@ module.exports = webpackConfig;
             }
         }
     });
-    // { index: 'D:\\workspaces\\nodejs\\myExpress\\express-multiple-entry\\public\\js\\app\\index.js' }
-    console.log('getEntry _files ', _files);
-    return _files;
+    return _files; // { index: 'D:\\workspaces\\nodejs\\myExpress\\express-multiple-entry\\public\\js\\app\\index.js' }
 }

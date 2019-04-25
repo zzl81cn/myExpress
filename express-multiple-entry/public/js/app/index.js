@@ -5,7 +5,7 @@
 abc => {}
 var funcObj =  {
     draw: () => {
-        document.querySelector(".inner").innerHTML = '<p>' + Math.floor(Math.random() * (99 + 1)) + '</p>';
+        document.querySelector(".inner").innerHTML = '<p>' + Math.floor(Math.random() * (88 + 1)) + '</p>';
     }
 }
 funcObj.draw();

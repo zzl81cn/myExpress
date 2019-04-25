@@ -1,5 +1,7 @@
 ## list
 * [express-multiple-entry](/express-multiple-entry)
+* [express-hbs - basic handlebars templates render as express router + request api](/express-hbs)
+* [mysql Express 4.x 的一个项目，后面补充Mongoose部分](/mysql)
 
 
 
@@ -79,5 +81,6 @@
     }
 
 ```
+
 
 [1]: http://www.cnblogs.com/zhongweiv/tag/Nodejs/ "NodeJS实战：Express+Mongoose+ejs"
