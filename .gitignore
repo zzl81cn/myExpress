@@ -9,3 +9,7 @@ node_modules/
 #Mr Developer
 .mr.developer.cfg
 /.idea/
+
+
+# build
+dist/
