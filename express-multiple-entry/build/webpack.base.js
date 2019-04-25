@@ -8,7 +8,7 @@ const glob = require("glob");
 
 const common = require('../bin/common');
 let envMode = common.getEnvMode(); // development || production
-const output = path.resolve(__dirname,'../dist/'); //文件输出目录
+const output = path.resolve(__dirname,'../public/dist/'); //文件输出目录
 let entry = getEntry(path.resolve(__dirname,'../public/js/app'));
 console.log('entry', entry)
 let webpackConfig = {
