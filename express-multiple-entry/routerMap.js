@@ -6,6 +6,8 @@ module.exports = function (app) {
     app.use('/', indexRouter);
     /* user */
     const userRouter = require('./routes/users');
-    app.use('/', userRouter);
-
+    app.use('/user', userRouter);
+    /* super contain superagent and cheeio */
+    const superRouter = require('./routes/super');
+    app.use('/super', superRouter);
 };

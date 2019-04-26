@@ -1,15 +1,15 @@
 {{#extend "header"}}
-<title>index</title>
+<title>{{index}}</title>
 <link rel="stylesheet" type="text/css" href="/css/index.css" />
 {{/extend}}
-<h1>{{title}}</h1>
+<!-- <h1>{{title}}</h1> -->
 <div class="inner"></div>
 <p>Welcome to {{data.user.name}}</p>
     <p>{{data.user.name}}</p>
 {{#if data}}
     <p>1234 {{data.user.name}}</p>
 {{else}}
-    <p>tset</p>
+    <p>test</p>
 {{/if}}
 <ul>
     {{#each data.data}}

@@ -44,6 +44,26 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 /* router */
 require('./routerMap')(app);
 
+var blocks = {};
+hbs.registerHelper('extend', function (name, context) {
+    var block = blocks[name];
+    if (!block) {
+        block = blocks[name] = [];
+    }
+    block.push(context.fn(this));
+});
+hbs.registerHelper('block', function (name) {
+    var val = (blocks[name] || []).join('\n');
+    blocks[name] = [];
+    return val;
+});
+hbs.registerHelper('if_eq', function (a, b, opts) {
+    if (a === b)
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

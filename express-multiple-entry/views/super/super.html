@@ -1,0 +1,17 @@
+{{#extend "header"}}
+<title>{{index}}</title>
+<link rel="stylesheet" type="text/css" href="/css/index.css" />
+{{/extend}}
+<!-- <h1>{{title}}</h1> -->
+<div class="inner"></div>
+<p>Welcome to {{title}}</p>
+{{#if data}}
+    <ul>
+        {{#each data}}
+            <li> <span class="item-number">{{title}}</span>{{this.title}} {{href}}</li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>test</p>
+{{/if}}
+<script src="/js/super/super.js"></script>

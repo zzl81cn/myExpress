@@ -6,7 +6,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod --progress --colors && gulp build",
     "start": "cross-env NODE_ENV=development node ./bin/www",
     "site": "cross-env NODE_ENV=production node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "cross-env NODE_ENV=development nodemon ./bin/www"
   },
   "dependencies": {
     "async": "^2.6.2",

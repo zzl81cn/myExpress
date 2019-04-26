@@ -10,7 +10,6 @@ let common  = require('../bin/common');
 let logger = common.getLogger('index-router');
 const indexBiz = require('../biz/indexBiz');
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // logger.info(req.headers)

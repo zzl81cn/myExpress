@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "nodejs basic",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "phantomjs": "node_modules/.bin/phantomjs"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,8 @@
     "eventproxy": "^1.0.0",
     "express": "^4.16.4",
     "superagent": "^5.0.3"
+  },
+  "devDependencies": {
+    "phantomjs": "^2.1.7"
   }
 }
