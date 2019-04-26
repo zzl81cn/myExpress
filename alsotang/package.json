@@ -1,0 +1,18 @@
+{
+  "name": "alsotang",
+  "version": "1.0.0",
+  "description": "nodejs basic",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.6.2",
+    "cheerio": "^1.0.0-rc.3",
+    "eventproxy": "^1.0.0",
+    "express": "^4.16.4",
+    "superagent": "^5.0.3"
+  }
+}
