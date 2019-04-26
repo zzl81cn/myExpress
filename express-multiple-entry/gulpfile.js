@@ -33,7 +33,7 @@ gulp.task("compile", ["clean"], function () {
 	var css = gulp.src("public/stylesheets/*.css", {base: "public"});
 	return merge(js, css)
 		.pipe(rev())
-		.pipe(gulp.dest(config.compilePath + "/static"))
+		.pipe(gulp.dest(config.compilePath + "/public"))
 		.pipe(rev.manifest())
 		.pipe(gulp.dest(config.compilePath + "/tmp"));
 });

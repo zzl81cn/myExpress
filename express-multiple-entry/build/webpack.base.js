@@ -8,7 +8,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const glob = require("glob");
 
 const common = require('../bin/common');
-const output = path.resolve(__dirname,'../public/dist/'); //文件输出目录
+const output = path.resolve(__dirname,'../public/dist'); //文件输出目录
 // let entry = getEntry(path.resolve(__dirname,'../public/js/app'));
 let entry = common.getEntry('../public/js/app', 'app');
 let webpackConfig = {
@@ -21,7 +21,9 @@ let webpackConfig = {
     },
     resolve:{
         extensions: [".js", ".css"],
-        // root: path.join(__dirname, "/public/")
+        alias: {
+            app: "../public/js/app"
+        }
     },
     module:{
         rules: [
@@ -62,7 +64,11 @@ let webpackConfig = {
     },
     plugins: [
         // new CleanWebpackPlugin([path.resolve(__dirname,'../dist/')])
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+                root: path.resolve('../public/'), // root
+                verbose: true // Write logs to console.
+            }
+        ),
         // new ExtractTextPlugin('css/[name].css')
     ]
 };

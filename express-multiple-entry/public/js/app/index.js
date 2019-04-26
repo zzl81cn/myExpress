@@ -2,6 +2,8 @@
  * @description index
  */
 
+
+
 abc => {}
 var funcObj =  {
     draw: () => {
