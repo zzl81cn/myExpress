@@ -34,6 +34,18 @@ let webpackConfig = {
                 include: path.resolve("public/js"),
             },
             { test: /\.(hbs|html)$/, loader: "handlebars-loader" },
+            {
+                test: /\.css$/,
+                use: [{
+                    loader: MiniCssExtractPlugin.loader
+                },{
+                    loader: 'css-loader',
+                    /* options: {
+                        sourceMap: mode=== common.getEnvMode(),
+                        importLoaders: 1
+                    } */
+                }]
+            },
             /* {
                 test: /\.css$/,
                 use: [{
@@ -69,6 +81,7 @@ let webpackConfig = {
                 verbose: true // Write logs to console.
             }
         ),
+        new MiniCssExtractPlugin({filename: 'css/[name].css'}),
         // new ExtractTextPlugin('css/[name].css')
     ]
 };

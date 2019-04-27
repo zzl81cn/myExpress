@@ -30,7 +30,7 @@ gulp.task("compile", ["clean"], function () {
 			browsers: ["last 2 versions", "Firefox <= 20"],
 			cascade: false
 		})); */
-	var css = gulp.src("public/stylesheets/*.css", {base: "public"});
+	var css = gulp.src("public/css/*.css", {base: "public"});
 	return merge(js, css)
 		.pipe(rev())
 		.pipe(gulp.dest(config.compilePath + "/public"))

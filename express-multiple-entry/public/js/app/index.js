@@ -2,7 +2,8 @@
  * @description index
  */
 
-
+require("../../css/style.css");
+require("../../css/index.css");
 
 abc => {}
 var funcObj =  {
