@@ -1,3 +1,9 @@
+## webpack plugins
+### mini-css-extract-plugin
+> 此插件将CSS提取到单独的文件中。它为每个包含CSS的JS文件创建一个CSS文件。它支持CSS和SourceMaps的按需加载。
+只能用于webpack-v4
+相较于“extract-text-webpack-plugin”，1.支持异步加载，2.没有重复编译，3.易于使用，4.专注于css。
+
 ## dev-dependence
 ``` javascript
   "devDependencies": {

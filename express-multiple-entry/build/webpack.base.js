@@ -20,9 +20,10 @@ let webpackConfig = {
         filename: "js/[name].js"
     },
     resolve:{
-        extensions: [".js", ".css"],
+        extensions: [".js", ".css", ".less"],
         alias: {
-            app: "../public/js/app"
+            app: "../public/js/app",
+            stylePath: "../public/css"
         }
     },
     module:{
@@ -33,7 +34,7 @@ let webpackConfig = {
                 exclude: /node_modules/,
                 include: path.resolve("public/js"),
             },
-            { test: /\.(hbs|html)$/, loader: "handlebars-loader" },
+            {test: /\.(hbs|html)$/, loader: "handlebars-loader"},
             {
                 test: /\.css$/,
                 use: [{
@@ -46,18 +47,53 @@ let webpackConfig = {
                     } */
                 }]
             },
-            /* {
-                test: /\.css$/,
+            {
+                test: /\.less$/,
                 use: [{
                     loader: MiniCssExtractPlugin.loader
                 },{
                     loader: 'css-loader',
-                    options: {
-                        sourceMap: mode==='development',
-                        importLoaders: 1
-                    }
-                }]
-            }, */
+                },{
+                    loader: 'postcss-loader',
+                },{
+                    loader: 'less-loader'
+                }
+                ]
+            }            // {
+            //     test: /\.less$/,
+            //     use: [{
+            //         loader: MiniCssExtractPlugin.loader
+            //     },{
+            //         loader: 'css-loader',
+            //         options: {
+            //             // sourceMap: mode==='development',
+            //             importLoaders: 2
+            //         }
+            //     },{
+            //         loader: 'postcss-loader',
+            //         options: {
+            //             // sourceMap: mode==='development',
+            //             plugins: [
+            //                 require('autoprefixer')({
+            //                     browsers:[
+            //                         'last 5 version',
+            //                         '> 1%',
+            //                         'not dead',
+            //                         "iOS >= 6",
+            //                         "Android >= 4",
+            //                         "IE >= 9"
+            //                     ]
+            //                 })
+            //             ]
+            //         }
+            //     },{
+            //         loader: 'less-loader',
+            //         options: {
+            //             // sourceMap: mode==='development' //启用sourceMap
+            //         }
+            //     }]
+            // }
+
             // {
             //     test: /\.(png|jpg)$/,
             //     loader: "url-loader",
