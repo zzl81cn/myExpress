@@ -53,6 +53,7 @@
     "mini-css-extract-plugin": "^0.6.0",
     "postcss-loader": "^3.0.0",
     "run-sequence": "^2.2.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.30.0",

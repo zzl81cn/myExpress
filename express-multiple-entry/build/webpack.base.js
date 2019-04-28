@@ -2,14 +2,11 @@ const fs = require("fs");
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const glob = require("glob");
 
 const common = require('../bin/common');
 const output = path.resolve(__dirname,'../public/dist'); //文件输出目录
-// let entry = getEntry(path.resolve(__dirname,'../public/js/app'));
 let entry = common.getEntry('../public/js/app', 'app');
 let webpackConfig = {
     mode: common.getEnvMode(), // development || production
@@ -33,9 +30,10 @@ let webpackConfig = {
                 loader: "babel-loader",
                 exclude: /node_modules/,
                 include: path.resolve("public/js"),
-            },
-            {test: /\.(hbs|html)$/, loader: "handlebars-loader"},
-            {
+            }, {
+                test: /\.(hbs|html)$/,
+                loader: "handlebars-loader"
+            }, {
                 test: /\.css$/,
                 use: [{
                     loader: MiniCssExtractPlugin.loader
@@ -46,8 +44,7 @@ let webpackConfig = {
                         importLoaders: 1
                     } */
                 }]
-            },
-            {
+            }, {
                 test: /\.less$/,
                 use: [{
                     loader: MiniCssExtractPlugin.loader
@@ -59,7 +56,21 @@ let webpackConfig = {
                     loader: 'less-loader'
                 }
                 ]
-            }            // {
+            }, {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },{
+                        loader: 'css-loader',
+                    },{
+                        loader: 'postcss-loader',
+                    },{
+                        loader: 'sass-loader'
+                    }
+                ]
+            },
+            // {
             //     test: /\.less$/,
             //     use: [{
             //         loader: MiniCssExtractPlugin.loader
@@ -111,26 +122,15 @@ let webpackConfig = {
         ],
     },
     plugins: [
-        // new CleanWebpackPlugin([path.resolve(__dirname,'../dist/')])
         new CleanWebpackPlugin({
                 root: path.resolve('../public/'), // root
                 verbose: true // Write logs to console.
             }
         ),
         new MiniCssExtractPlugin({filename: 'css/[name].css'}),
-        // new ExtractTextPlugin('css/[name].css')
     ]
 };
 module.exports = webpackConfig;
-/* common.getRoot('views/*.hbs').forEach(fileName => {
-    let conf = {
-        template: path.resolve(__dirname, './views/' + fileName + '.hbs'), // html模板路径
-        filename: 'views/' + fileName + '.hbs', // 生成的html存放路径，相对于 path
-        inject: true, // 'head', body, true, false
-        chunks: [fileName]
-    };
-    webpackConfig.plugins.push(new HtmlWebpackPlugin(conf));
-}); */
 
 // common shift
 /* !function(){

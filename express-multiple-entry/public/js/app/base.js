@@ -1,1 +1,1 @@
-require("../../css/base.less")
+require("../../css/base.scss")
