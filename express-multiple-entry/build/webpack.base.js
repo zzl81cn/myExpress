@@ -115,10 +115,6 @@ let webpackConfig = {
             //         name: "imgs/[name].[ext]"
             //     }
             // },
-            // {
-            //     test : /\.css$/,
-            //     loader : ExtractTextPlugin.extract('style-loader', 'css-loader')
-            // }
         ],
     },
     plugins: [
