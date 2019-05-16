@@ -8,6 +8,7 @@ node_modules/
 
 #Mr Developer
 .mr.developer.cfg
+.idea/
 /.idea/
 
 
