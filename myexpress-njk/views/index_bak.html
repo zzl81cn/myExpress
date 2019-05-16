@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <% if (data.info.isPledge != 0 && data.info.title == 'test11') { %>
+      <%# if (data.info.title == 'test11') { %>
+        <%#= data.info.title %>
+      <%# } %>
+    <p><%= data.info.isPledge %> 是</p>
+    <% } else { %>
+    <p><%= data.info.isPledge %> 不是</p>
+    <% }%>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{% extends './app/layout.njk'%}
+{% block title %}{{ title }} {% endblock %}
+{% block body %}
+    <h1>{{ title }}</h1>
+    <p>Welcome to {{ title }}</p>
+    <p>current isPledge is {{data.info.isPledge}}</p>
+  {% if data.info.isPledge === 0 %}
+    <p>123</p>
+  {% elif data.info.isPledge === 1 %}
+    <p>345</p>
+    {% include "./app/partials/demo.njk" %} 345
+  {% else %}
+    <p>456</p>
+  {% endif%}
+  {% include "./app/partials/demo.njk" %}
+{% endblock %}
