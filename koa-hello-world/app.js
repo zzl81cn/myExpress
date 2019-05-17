@@ -5,13 +5,16 @@ const static = require('koa-static');
 const nunjucks = require('nunjucks');
 const Router = require('koa-router');
 
+const routes = require('./routerMaps');
+
 nunjucks.configure('views', { autoescape: true });
 
+// step 1, simple example render
 /*app.use(ctx => {
     ctx.body = "<p>Helloworld</p>";
 });*/
 
-// 静态资源目录对于相对入口文件index.js的路径
+// 静态资源目录对于相对入口文件 app.js 的路径
 const staticPath = './public';
 app.use(static(path.join(__dirname, staticPath)));
 
@@ -19,7 +22,8 @@ app.use(static(path.join(__dirname, staticPath)));
     ctx.body = await nunjucks.render('index.html', { name: 'nunjucks' })
 });*/
 
-// 首页路由
+// 以下路由全部移除做分层处理：路由映射文件routerMaps<各级路由文件<controller
+/*
 let home = new Router();
 home.get("/", async (ctx) => {
     ctx.body = await nunjucks.render('index.html', { name: 'nunjucks&router' });
@@ -36,12 +40,16 @@ router.use('/about', about.routes(), about.allowedMethods());
 
 app.use(router.routes())
     .use(router.allowedMethods());
+*/
+
+app.use(routes.routes())
+    .use(routes.allowedMethods());
 
 app.listen(3000, () => {
     console.log('[koa-helloword] starting at port 3000.');
 });
 
-// https://medium.com/@Zenkilies/render-nunjucks-template-with-koajs-b951b1503db1
+// nunjucks contain methods: https://medium.com/@Zenkilies/render-nunjucks-template-with-koajs-b951b1503db1
 /*app.use(async ctx => {
     ctx.body = await render('./views/home.html', {
         username: 'James'
