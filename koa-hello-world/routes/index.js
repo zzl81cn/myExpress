@@ -1,6 +1,6 @@
 const index = require('koa-router')();
-const nunjucks = require('nunjucks');
+const indexCtrl = require('../controllers/index/indexController');
 
-module.exports = index.get('/', async (ctx) => {
-    ctx.body = await nunjucks.render('index.html', { name: 'nunjucks&router' });
-});
+index.get('/', indexCtrl);
+
+module.exports = index;

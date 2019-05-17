@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const app = new Koa();
+const bodyParser = require('koa-bodyparser');
 const path = require('path');
 const static = require('koa-static');
 const nunjucks = require('nunjucks');
@@ -17,7 +18,7 @@ nunjucks.configure('views', { autoescape: true });
 // 静态资源目录对于相对入口文件 app.js 的路径
 const staticPath = './public';
 app.use(static(path.join(__dirname, staticPath)));
-
+app.use(bodyParser()); // koa-bodyparser必须在router之前被注册到app对象上
 /*app.use(async ctx => {
     ctx.body = await nunjucks.render('index.html', { name: 'nunjucks' })
 });*/
