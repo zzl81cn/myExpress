@@ -10,6 +10,36 @@ const routes = require('./routerMaps');
 
 nunjucks.configure('views', { autoescape: true });
 
+const webpack = require('webpack');
+const webpackDevMiddleWare = require('koa-webpack-dev-middleware');
+const webpackHotMiddleWare = require('koa-webpack-hot-middleware');
+const koaWebpack = require('koa-webpack');
+const webpackConfig = require('./build/webpack.dev');
+const compiler = webpack(webpackConfig);
+app.use(webpackDevMiddleWare(compiler, {
+    // all options optional
+    noInfo: false,
+    // display no info to console (only warnings and errors)
+    quiet: true,
+    // display nothing to the console
+    lazy: true,
+    // switch into lazy mode
+    // that means no watching, but recompilation on every request
+    watchDelay: 300,
+    // delay after change (only lazy: false)
+    publicPath: "/assets/",
+    // public path to bind the middleware to
+    // use the same as in webpack
+
+    headers: { "X-Custom-Header": "yes" },
+    // custom headers
+    stats: {
+        colors: true
+    }
+    // options for formating the statistics))
+}));
+app.use(webpackHotMiddleWare(compiler, {}));
+
 // step 1, simple example render
 /*app.use(ctx => {
     ctx.body = "<p>Helloworld</p>";
