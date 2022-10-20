@@ -16,7 +16,7 @@
     "express-session": "latest",
     "express-useragent": "^1.0.7",
     "formidable": "latest",
-    "mongoose": "^4.4.19",
+    "mongoose": "^4.13.21",
     "morgan": "~1.6.1",
     "mysql": "latest",
     "request": "^2.79.0",
