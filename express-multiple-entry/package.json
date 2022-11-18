@@ -45,7 +45,7 @@
     "gulp-rev-replace": "^0.4.4",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^1.5.1",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "merge-stream": "^1.0.1",
